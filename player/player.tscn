@@ -1,0 +1,251 @@
+[gd_scene load_steps=76 format=2]
+
+[ext_resource path="res://player/assets/player_swing1_0.png" type="Texture" id=1]
+[ext_resource path="res://player/assets/player_swing1_4.png" type="Texture" id=2]
+[ext_resource path="res://player/assets/player_swing1_6.png" type="Texture" id=3]
+[ext_resource path="res://player/assets/player_walk_10.png" type="Texture" id=4]
+[ext_resource path="res://player/assets/player_walk_01.png" type="Texture" id=5]
+[ext_resource path="res://player/assets/player_walk_00.png" type="Texture" id=6]
+[ext_resource path="res://player/assets/player_walk_11.png" type="Texture" id=7]
+[ext_resource path="res://player/assets/player_walk_03.png" type="Texture" id=8]
+[ext_resource path="res://player/assets/player_swing1_7.png" type="Texture" id=9]
+[ext_resource path="res://player/assets/player_walk_07.png" type="Texture" id=10]
+[ext_resource path="res://player/assets/player_walk_13.png" type="Texture" id=11]
+[ext_resource path="res://player/assets/player_idle_0.png" type="Texture" id=12]
+[ext_resource path="res://player/assets/player_swing1_2.png" type="Texture" id=13]
+[ext_resource path="res://player/assets/player_walk_12.png" type="Texture" id=14]
+[ext_resource path="res://player/assets/player_walk_14.png" type="Texture" id=15]
+[ext_resource path="res://player/assets/player_walk_02.png" type="Texture" id=16]
+[ext_resource path="res://player/assets/player_swing1_5.png" type="Texture" id=17]
+[ext_resource path="res://player/assets/player_walk_04.png" type="Texture" id=18]
+[ext_resource path="res://player/assets/player_walk_09.png" type="Texture" id=19]
+[ext_resource path="res://player/assets/player_swing1_3.png" type="Texture" id=20]
+[ext_resource path="res://player/assets/player_walk_06.png" type="Texture" id=21]
+[ext_resource path="res://player/assets/player_walk_08.png" type="Texture" id=22]
+[ext_resource path="res://player/assets/player_walk_15.png" type="Texture" id=23]
+[ext_resource path="res://player/assets/player_swing1_1.png" type="Texture" id=24]
+[ext_resource path="res://player/assets/player_walk_05.png" type="Texture" id=25]
+[ext_resource path="res://player/assets/player_swing2_0.png" type="Texture" id=26]
+[ext_resource path="res://player/assets/player_swing2_1.png" type="Texture" id=27]
+[ext_resource path="res://player/assets/player_swing2_2.png" type="Texture" id=28]
+[ext_resource path="res://player/assets/player_swing2_3.png" type="Texture" id=29]
+[ext_resource path="res://player/assets/player_swing2_4.png" type="Texture" id=30]
+[ext_resource path="res://player/assets/player_swing4_11.png" type="Texture" id=31]
+[ext_resource path="res://player/assets/player_swing3_09.png" type="Texture" id=32]
+[ext_resource path="res://player/assets/player_swing4_14.png" type="Texture" id=33]
+[ext_resource path="res://player/assets/player_swing4_05.png" type="Texture" id=34]
+[ext_resource path="res://player/assets/player_swing4_04.png" type="Texture" id=35]
+[ext_resource path="res://player/assets/player_swing4_10.png" type="Texture" id=36]
+[ext_resource path="res://player/assets/player_swing4_13.png" type="Texture" id=37]
+[ext_resource path="res://player/assets/player_swing3_00.png" type="Texture" id=38]
+[ext_resource path="res://player/assets/player_swing4_07.png" type="Texture" id=39]
+[ext_resource path="res://player/assets/player_swing4_15.png" type="Texture" id=40]
+[ext_resource path="res://player/assets/player_swing2_7.png" type="Texture" id=41]
+[ext_resource path="res://player/assets/player_swing4_12.png" type="Texture" id=42]
+[ext_resource path="res://player/assets/player_swing2_6.png" type="Texture" id=43]
+[ext_resource path="res://player/assets/player_swing3_05.png" type="Texture" id=44]
+[ext_resource path="res://player/assets/player_swing2_5.png" type="Texture" id=45]
+[ext_resource path="res://player/assets/player_swing3_08.png" type="Texture" id=46]
+[ext_resource path="res://player/assets/player_swing3_11.png" type="Texture" id=47]
+[ext_resource path="res://player/assets/player_swing3_10.png" type="Texture" id=48]
+[ext_resource path="res://player/assets/player_swing3_01.png" type="Texture" id=49]
+[ext_resource path="res://player/assets/player_swing3_06.png" type="Texture" id=50]
+[ext_resource path="res://player/assets/player_swing4_01.png" type="Texture" id=51]
+[ext_resource path="res://player/assets/player_swing4_03.png" type="Texture" id=52]
+[ext_resource path="res://player/assets/player_swing3_07.png" type="Texture" id=53]
+[ext_resource path="res://player/assets/player_swing4_06.png" type="Texture" id=54]
+[ext_resource path="res://player/assets/player_swing4_02.png" type="Texture" id=55]
+[ext_resource path="res://player/assets/player_swing4_08.png" type="Texture" id=56]
+[ext_resource path="res://player/assets/player_swing4_09.png" type="Texture" id=57]
+[ext_resource path="res://player/assets/player_swing4_00.png" type="Texture" id=58]
+[ext_resource path="res://player/assets/player_swing3_02.png" type="Texture" id=59]
+[ext_resource path="res://player/assets/player_swing3_03.png" type="Texture" id=60]
+[ext_resource path="res://player/assets/player_swing3_04.png" type="Texture" id=61]
+[ext_resource path="res://player/assets/player_hurt_3.png" type="Texture" id=62]
+[ext_resource path="res://player/assets/player_hurt_0.png" type="Texture" id=63]
+[ext_resource path="res://player/assets/player_hurt_2.png" type="Texture" id=64]
+[ext_resource path="res://player/assets/player_hurt_1.png" type="Texture" id=65]
+[ext_resource path="res://player/player.gd" type="Script" id=66]
+[ext_resource path="res://scripts/fsm/fsm.gd" type="Script" id=67]
+[ext_resource path="res://player/state_normal.gd" type="Script" id=68]
+[ext_resource path="res://player/state_attack1.gd" type="Script" id=69]
+[ext_resource path="res://ui/ingame/camera/focus_point.tscn" type="PackedScene" id=70]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "swing_light2",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "walk",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 49 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 44 ), ExtResource( 50 ), ExtResource( 53 ), ExtResource( 46 ), ExtResource( 32 ), ExtResource( 48 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "swing_medium",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 58 ), ExtResource( 51 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 54 ), ExtResource( 39 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "swing_heavy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "swing_light1",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 63 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 62 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 25.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 16 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack1"
+length = 0.32
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "swing_light1" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("fsm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.32 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "normal" ],
+"method": "set_state"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk"
+length = 0.64
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walk" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 66 )
+
+[node name="fsm" type="Node" parent="."]
+script = ExtResource( 67 )
+initial_state = "normal"
+
+[node name="normal" type="Node" parent="fsm"]
+script = ExtResource( 68 )
+
+[node name="attack1" type="Node" parent="fsm"]
+script = ExtResource( 69 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -23 )
+frames = SubResource( 1 )
+animation = "swing_light1"
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
+shape = SubResource( 2 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+method_call_mode = 1
+anims/attack1 = SubResource( 5 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
+
+[node name="focus_point" parent="." instance=ExtResource( 70 )]
+position = Vector2( 0, -16 )
+distance = -1.0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/ingame/camera/focus_rect.gd" type="Script" id=1]
+
+[node name="camera_focus_rect" type="Position2D" groups=[
+"camera-focus",
+]]
+script = ExtResource( 1 )

@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://player/assets/player_attacks_swing1_1.png" type="Texture" id=1]
+[ext_resource path="res://player/assets/player_attacks_swing1_6.png" type="Texture" id=2]
+[ext_resource path="res://player/assets/player_attacks_swing1_2.png" type="Texture" id=3]
+[ext_resource path="res://player/assets/player_attacks_swing1_5.png" type="Texture" id=4]
+[ext_resource path="res://player/assets/player_attacks_swing1_3.png" type="Texture" id=5]
+[ext_resource path="res://player/assets/player_attacks_swing1_0.png" type="Texture" id=6]
+[ext_resource path="res://player/assets/player_attacks_swing1_7.png" type="Texture" id=7]
+[ext_resource path="res://player/assets/player_attacks_swing1_4.png" type="Texture" id=8]
+[ext_resource path="res://player/attacks/player_attack1.gd" type="Script" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "swing",
+"speed": 25.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 16 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "swing"
+length = 0.32
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.12, 0.32 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "do_attack"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="player_attack1" type="Area2D"]
+monitorable = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 9 )
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 39, -24 )
+frames = SubResource( 1 )
+animation = "swing"
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 58, -24 )
+shape = SubResource( 2 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "swing"
+method_call_mode = 1
+anims/swing = SubResource( 3 )
