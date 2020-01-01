@@ -1,12 +1,16 @@
 extends Control
 
 
+### \description Texture to use
 export var texture: Texture
+### \description Region of the texture to use.
 export var sub_rectangle: Rect2 = Rect2(17, 5, 104, 4)
 
 
 
+###################################################### _draw
 func _draw() -> void:
+	# draw the left part of the health bar
 	if rect_size.x >= 1:
 		var src_rect = sub_rectangle
 		src_rect.size.x = 1
@@ -17,6 +21,7 @@ func _draw() -> void:
 			src_rect
 		)
 	
+	# draw the right part of the health bar
 	if rect_size.x >= 2:
 		var src_rect = sub_rectangle
 		src_rect.position.x += src_rect.size.x - 1
@@ -28,6 +33,7 @@ func _draw() -> void:
 			src_rect
 		)
 	
+	# draw the center of the health bar
 	if rect_size.x >= 3:
 		var src_rect = sub_rectangle
 		src_rect.position.x += 1
@@ -40,5 +46,10 @@ func _draw() -> void:
 		)
 
 
+
+############################################################
+### \description Callback used with the resized even of the
+###              control.
+###
 func _on_resized():
 	update()
