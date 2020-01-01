@@ -233,7 +233,8 @@ script = ExtResource( 69 )
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -23 )
 frames = SubResource( 1 )
-animation = "swing_light1"
+animation = "walk"
+frame = 2
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
