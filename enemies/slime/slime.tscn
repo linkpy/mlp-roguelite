@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://enemies/slime/assets/slime_normal_0.png" type="Texture" id=1]
 [ext_resource path="res://enemies/slime/assets/slime_hurt_2.png" type="Texture" id=2]
@@ -15,17 +15,19 @@
 [ext_resource path="res://enemies/slime/assets/slime_attack_recovery_0.png" type="Texture" id=13]
 [ext_resource path="res://enemies/slime/assets/slime_attack_recovery_2.png" type="Texture" id=14]
 [ext_resource path="res://enemies/slime/assets/slime_attack_init_0.png" type="Texture" id=15]
+[ext_resource path="res://enemies/slime/state_chase.gd" type="Script" id=16]
+[ext_resource path="res://scripts/fsm/fsm.gd" type="Script" id=17]
+[ext_resource path="res://enemies/base/base.tscn" type="PackedScene" id=18]
+[ext_resource path="res://enemies/slime/slime.gd" type="Script" id=19]
+[ext_resource path="res://enemies/slime/state_idle.gd" type="Script" id=20]
+[ext_resource path="res://enemies/slime/state_attack.gd" type="Script" id=21]
+[ext_resource path="res://enemies/slime/state_hurt.gd" type="Script" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "normal",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "attack_init",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 14 ) ],
@@ -38,6 +40,11 @@ animations = [ {
 "name": "attack_active",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "attack_init",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "hurt",
@@ -47,7 +54,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 8 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 resource_name = "attack_init"
 length = 0.8
 tracks/0/type = "value"
@@ -75,7 +82,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 resource_name = "attack_recovery"
 length = 1.2
 step = 0.4
@@ -104,8 +111,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "chase"
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 step = 0.2
@@ -134,8 +140,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "hurt"
+[sub_resource type="Animation" id=6]
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:animation")
@@ -162,8 +167,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 step = 0.4
@@ -192,21 +196,40 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[node name="slime" type="KinematicBody2D"]
+[node name="slime" instance=ExtResource( 18 )]
+script = ExtResource( 19 )
 
-[node name="sprite" type="AnimatedSprite" parent="."]
+[node name="fsm" type="Node" parent="." index="1"]
+script = ExtResource( 17 )
+initial_state = "idle"
+
+[node name="idle" type="Node" parent="fsm" index="0"]
+script = ExtResource( 20 )
+
+[node name="chase" type="Node" parent="fsm" index="1"]
+script = ExtResource( 16 )
+
+[node name="attack" type="Node" parent="fsm" index="2"]
+script = ExtResource( 21 )
+
+[node name="hurt" type="Node" parent="fsm" index="3"]
+script = ExtResource( 22 )
+
+[node name="sprite" type="AnimatedSprite" parent="." index="2"]
 position = Vector2( 0, -5 )
 frames = SubResource( 1 )
-animation = "normal"
+animation = "attack_init"
 
-[node name="shape" type="CollisionShape2D" parent="."]
+[node name="shape" type="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
-[node name="animation" type="AnimationPlayer" parent="."]
+[node name="animation" type="AnimationPlayer" parent="." index="4"]
 autoplay = "idle"
-anims/attack_init = SubResource( 6 )
-anims/attack_recovery = SubResource( 7 )
-anims/chase = SubResource( 3 )
-anims/hurt = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/attack_init = SubResource( 8 )
+anims/attack_recovery = SubResource( 9 )
+anims/chase = SubResource( 10 )
+anims/hurt = SubResource( 6 )
+anims/idle = SubResource( 7 )
+[connection signal="player_sighted" from="." to="fsm/idle" method="_on_player_sighted" flags=6]
+[connection signal="player_sighted" from="." to="." method="_on_player_sighted" flags=6]
