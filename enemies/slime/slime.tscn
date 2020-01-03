@@ -126,6 +126,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("fsm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "chase" ],
+"method": "set_state"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.4
@@ -243,8 +257,8 @@ script = ExtResource( 22 )
 [node name="sprite" type="AnimatedSprite" parent="." index="2"]
 position = Vector2( 0, -5 )
 frames = SubResource( 1 )
-animation = "attack_init"
-frame = 1
+animation = "attack_recovery"
+frame = 2
 
 [node name="shape" type="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, -1 )
