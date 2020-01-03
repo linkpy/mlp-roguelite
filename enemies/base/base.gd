@@ -1,8 +1,9 @@
 extends "res://scripts/physics/base_kinematic.gd"
 
 
-### \description Player detectin radius.
-export var player_detection_radius: float = 10
+
+### \description Player detection range.
+export var player_detect_range: float = 10
 
 ### \description Player detection area
 onready var player_detection = $player_detection
@@ -14,9 +15,10 @@ signal player_sighted(p)
 
 
 
-##################################################### _ready
-func _ready() -> void:
-	$player_detection/shape.shape.radius = player_detection_radius
+############################################################
+### \description Set the player's detection
+func set_player_detection_radius(r: float) -> void:
+	$player_detection/shape.shape.radius = r
 
 
 

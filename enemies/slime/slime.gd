@@ -18,6 +18,11 @@ var player = null
 
 
 
+##################################################### _ready
+func _ready() -> void:
+	set_player_detection_radius(player_detect_range)
+
+
 
 ### \description Called when the player is sighted.
 ###

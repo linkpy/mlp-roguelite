@@ -230,7 +230,7 @@ tracks/1/keys = {
 collision_layer = 4
 collision_mask = 2049
 script = ExtResource( 19 )
-player_detection_radius = 194.0
+player_detect_range = 196.0
 
 [node name="fsm" type="Node" parent="." index="1"]
 script = ExtResource( 17 )
@@ -271,5 +271,5 @@ anims/attack_recovery = SubResource( 4 )
 anims/chase = SubResource( 5 )
 anims/hurt = SubResource( 6 )
 anims/idle = SubResource( 7 )
-[connection signal="player_sighted" from="." to="fsm/idle" method="_on_player_sighted" flags=6]
 [connection signal="player_sighted" from="." to="." method="_on_player_sighted" flags=6]
+[connection signal="player_sighted" from="." to="fsm/idle" method="_on_player_sighted" flags=6]
