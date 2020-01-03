@@ -2,6 +2,9 @@ tool
 extends Position2D
 
 
+
+### \description Enables or not the focus point.
+export var enabled: bool = true
 ### \description Distance at which the point is used.
 export var distance: float = 10 setget set_distance # m
 

@@ -2,8 +2,11 @@ tool
 extends Position2D
 
 
-
+### \description Enables or not the focus point.
+export var enabled: bool = true
+### \description Half size of the rectangle.
 export var half_extents: Vector2 = Vector2(8,8) setget set_half_extents
+### \description Distance at which the rect is used.
 export var distance: float = 10 setget set_distance # m
 
 

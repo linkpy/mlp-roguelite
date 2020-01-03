@@ -52,6 +52,9 @@ func get_close_focus_objects() -> Array:
 	var ppos = player.global_position
 	
 	for fo in focus_objects:
+		if not fo.enabled:
+			continue
+		
 		if fo.distance < 0:
 			result.push_back(fo)
 		elif ppos.distance_to(fo.global_position) < fo.get_distance():
