@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "BaseKinematic",
+"language": "GDScript",
+"path": "res://scripts/physics/base_kinematic.gd"
+}, {
 "base": "Object",
 "class": "Constants",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://scripts/fsm/state.gd"
 } ]
 _global_script_class_icons={
+"BaseKinematic": "",
 "Constants": "",
 "FSM": "",
 "FSM_State": ""
