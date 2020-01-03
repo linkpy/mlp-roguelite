@@ -4,7 +4,8 @@ extends FSM_State
 
 ###################################################### enter
 func enter(data) -> void:
-	object.animation = "attack_init"
+	object.animation.play("attack_init")
+	object.velocity.x = 0
 	
 	if object.player.position.x < object.position.x:
 		object.sprite.flip_h = true
