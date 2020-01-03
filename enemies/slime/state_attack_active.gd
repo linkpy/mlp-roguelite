@@ -13,7 +13,7 @@ func enter(data) -> void:
 	object.sprite.frame = 0
 	
 	object.velocity.y -= object.attack_impulse
-	object.velocity.x = direction * object.movement_speed
+	object.velocity.x = direction * object.attack_speed
 
 
 
