@@ -25,4 +25,4 @@ func _physics_process(dt: float):
 	object.move(dt)
 	
 	if obj_pos.distance_to(pl_pos) <= player_attack_range:
-		controller.state = "attack"
+		controller.state = "attack_init"
