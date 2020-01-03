@@ -2,3 +2,5 @@
 *.tres text eol=lf
 *.gd text eol=lf
 *.import text eol=lf
+*.godot text eol=lf
+.gitattributes text eol=lf
