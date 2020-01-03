@@ -1,6 +1,9 @@
 extends "res://enemies/base/base.gd"
 
 
+### \description Movement speed of the slime.
+export var movement_speed: float = 3
+
 ### \description State machine.
 onready var fsm = $fsm
 ### \description Sprite of the slime.
