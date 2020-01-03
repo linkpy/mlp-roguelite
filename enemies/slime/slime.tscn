@@ -200,6 +200,7 @@ tracks/1/keys = {
 collision_layer = 4
 collision_mask = 2049
 script = ExtResource( 19 )
+player_detection_radius = 194.0
 
 [node name="fsm" type="Node" parent="." index="1"]
 script = ExtResource( 17 )
