@@ -2,6 +2,12 @@ extends FSM_State
 
 
 
+########################################### _physics_process
+func _physics_process(dt: float) -> void:
+	object.move(dt)
+
+
+
 ############################################################
 ### \description Called when the player is sighted.
 ###
