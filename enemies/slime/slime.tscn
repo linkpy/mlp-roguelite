@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://enemies/slime/assets/slime_normal_0.png" type="Texture" id=1]
 [ext_resource path="res://enemies/slime/assets/slime_hurt_2.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://enemies/slime/state_idle.gd" type="Script" id=20]
 [ext_resource path="res://enemies/slime/state_attack_init.gd" type="Script" id=21]
 [ext_resource path="res://enemies/slime/state_hurt.gd" type="Script" id=22]
+[ext_resource path="res://enemies/slime/state_attack_active.gd" type="Script" id=23]
+[ext_resource path="res://enemies/slime/state_attack_recovery.gd" type="Script" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -229,7 +231,13 @@ script = ExtResource( 16 )
 [node name="attack_init" type="Node" parent="fsm" index="2"]
 script = ExtResource( 21 )
 
-[node name="hurt" type="Node" parent="fsm" index="3"]
+[node name="attack_active" type="Node" parent="fsm" index="3"]
+script = ExtResource( 23 )
+
+[node name="attack_recovery" type="Node" parent="fsm" index="4"]
+script = ExtResource( 24 )
+
+[node name="hurt" type="Node" parent="fsm" index="5"]
 script = ExtResource( 22 )
 
 [node name="sprite" type="AnimatedSprite" parent="." index="2"]
