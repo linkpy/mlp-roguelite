@@ -36,7 +36,7 @@ func _physics_process(dt: float) -> void:
 	elif object.velocity.y >= 1.5:
 		object.sprite.frame = 2
 	
-	object.move(dt)
+	object.move(dt, true)
 	
 	if object.is_on_floor():
 		controller.state = "attack_recovery"
