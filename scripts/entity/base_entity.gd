@@ -49,10 +49,10 @@ func is_dead() -> bool:
 ### \param amnt : amount of applied damages.
 ###
 func apply_damages(origin, amnt: float) -> void:
+	health = max(0, health - amnt)
+	
 	emit_signal("damaged", origin, amnt)
 	_spawn_damage_indicator(amnt, Color.red)
-	
-	health = max(0, health - amnt)
 	
 	if health == 0:
 		emit_signal("killed", origin)
@@ -64,10 +64,10 @@ func apply_damages(origin, amnt: float) -> void:
 ### \param amnt : amount of applied healing.
 ###
 func apply_healing(origin, amnt: float) -> void:
+	health = min(stats.get_maximum_health(), health + amnt)
+	
 	emit_signal("healed", origin, amnt)
 	_spawn_damage_indicator(amnt, Color.green)
-	
-	health = min(stats.get_maximum_health(), health + amnt)
 
 
 
