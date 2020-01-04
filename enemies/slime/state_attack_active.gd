@@ -24,7 +24,7 @@ func enter(data) -> void:
 	
 	object.impulse( 
 		Vector2(1, 0).rotated(-PI/6) * Vector2(direction, 1),
-		object.attack_impulse
+		object.stats.get_jump_force()
 	)
 
 

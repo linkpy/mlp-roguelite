@@ -28,7 +28,8 @@ func _physics_process(dt: float):
 	var obj_pos = object.position
 	
 	object.velocity.x = (
-		sign(pl_pos.x - obj_pos.x) * object.movement_speed
+		  sign(pl_pos.x - obj_pos.x) 
+		* object.stats.get_movement_speed()
 	)
 	
 	object.move(dt)

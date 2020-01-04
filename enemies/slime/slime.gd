@@ -7,11 +7,6 @@ extends "res://enemies/base/base.gd"
 
 
 
-### \description Movement speed of the slime.
-export var movement_speed: float = 3 # m/s
-### \description Velocity impulse when the slime attacks.
-export var attack_impulse: float = 14
-
 ### \description State machine.
 onready var fsm = $fsm
 ### \description Sprite of the slime.
