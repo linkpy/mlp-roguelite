@@ -25,9 +25,18 @@ func _ready() -> void:
 
 
 
+############################################################
 ### \description Called when the player is sighted.
 ###
 ### \note This is connected as oneshot.
 ###
 func _on_player_sighted(p):
 	player = p
+
+############################################################
+### \description Called when the slime is killed.
+###
+### \note This is connected as oneshot.
+###
+func _on_killed(origin):
+	queue_free()
