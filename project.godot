@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "BaseEntity",
+"language": "GDScript",
+"path": "res://scripts/entity/base_entity.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "BaseKinematic",
 "language": "GDScript",
 "path": "res://scripts/entity/base_kinematic.gd"
@@ -55,6 +60,7 @@ _global_script_classes=[ {
 "path": "res://scripts/stats/property.gd"
 } ]
 _global_script_class_icons={
+"BaseEntity": "",
 "BaseKinematic": "",
 "CameraFocusPoint": "",
 "CameraFocusRectangle": "",

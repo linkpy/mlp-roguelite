@@ -1,5 +1,6 @@
 ### \description Base class for all damagable entities.
 ###
+class_name BaseEntity
 extends "res://scripts/entity/base_kinematic.gd"
 
 
@@ -8,4 +9,11 @@ extends "res://scripts/entity/base_kinematic.gd"
 export(Resource) var stats
 
 ### \description Health of the entity.
-onready var health = stats.get_max_health()
+var health
+
+
+
+##################################################### _ready
+func _ready():
+	stats.initialize()
+	health = stats.get_max_health()

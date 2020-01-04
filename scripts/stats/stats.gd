@@ -27,11 +27,11 @@ var jump_force: StatsProperty
 
 
 ############################################################
-### \description Constructor.
+### \description Initializes the stats object.
 ###
 ### Initializes the properties.
 ###
-func _init() -> void:
+func initialize() -> void:
 	max_health = StatsProperty.new(max_health_, 0, 0)
 	attack = StatsProperty.new(attack_, 0, 0)
 	movement_speed = StatsProperty.new(movement_speed_, 0, 0)

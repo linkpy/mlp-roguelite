@@ -91,24 +91,24 @@ animations = [ {
 "name": "swing_light2",
 "speed": 25.0
 }, {
-"frames": [ ExtResource( 38 ), ExtResource( 49 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 44 ), ExtResource( 50 ), ExtResource( 53 ), ExtResource( 46 ), ExtResource( 32 ), ExtResource( 48 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "swing_medium",
-"speed": 25.0
-}, {
-"frames": [ ExtResource( 63 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 62 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 58 ), ExtResource( 51 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 54 ), ExtResource( 39 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 40 ) ],
 "loop": true,
 "name": "swing_heavy",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 38 ), ExtResource( 49 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 44 ), ExtResource( 50 ), ExtResource( 53 ), ExtResource( 46 ), ExtResource( 32 ), ExtResource( 48 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "swing_medium",
+"speed": 25.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 8 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "walk",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 63 ), ExtResource( 65 ), ExtResource( 64 ), ExtResource( 62 ) ],
+"loop": true,
+"name": "hurt",
 "speed": 25.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 9 ) ],
@@ -254,4 +254,5 @@ anims/walk = SubResource( 6 )
 
 [node name="focus_point" parent="." instance=ExtResource( 70 )]
 position = Vector2( 0, -16 )
+enabled = true
 distance = -1.0
