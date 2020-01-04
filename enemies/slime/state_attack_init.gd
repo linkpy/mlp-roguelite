@@ -12,7 +12,7 @@ extends FSM_State
 
 
 ###################################################### enter
-func enter(data) -> void:
+func enter(_data) -> void:
 	object.animation.play("attack_init")
 	object.velocity.x = 0
 	

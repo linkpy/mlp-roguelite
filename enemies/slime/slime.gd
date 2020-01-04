@@ -38,5 +38,5 @@ func _on_player_sighted(p):
 ###
 ### \note This is connected as oneshot.
 ###
-func _on_killed(origin):
+func _on_killed(_origin):
 	queue_free()

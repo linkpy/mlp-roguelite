@@ -104,12 +104,12 @@ func get_state() -> String:
 ### \param state : The state to notify and to configure.
 ### \param data : Additional data to pass to the state.
 ###
-func _enter_state(state, data) -> void:
-	if state == null:
+func _enter_state(state_n, data) -> void:
+	if state_n == null:
 		return
 	
-	_set_state_processes(state, true)
-	state.enter(data)
+	_set_state_processes(state_n, true)
+	state_n.enter(data)
 
 ############################################################
 ### \description Notifies and configures the state when it
@@ -117,12 +117,12 @@ func _enter_state(state, data) -> void:
 ###
 ### \param state : The state to notify and configure.
 ###
-func _exit_state(state) -> void:
-	if state == null:
+func _exit_state(state_n) -> void:
+	if state_n == null:
 		return
 	
-	state.exit()
-	_set_state_processes(state, false)
+	state_n.exit()
+	_set_state_processes(state_n, false)
 
 ############################################################
 ### \description Enables or disables the node's processes.
@@ -130,7 +130,7 @@ func _exit_state(state) -> void:
 ### \param state : The target.
 ### \param enabled : True to enables the processes, false 
 ###        otherwise.
-func _set_state_processes(state: Node, enabled: bool) -> void:
-	state.set_process(enabled)
-	state.set_process_input(enabled)
-	state.set_physics_process(enabled)
+func _set_state_processes(state_n: Node, enabled: bool) -> void:
+	state_n.set_process(enabled)
+	state_n.set_process_input(enabled)
+	state_n.set_physics_process(enabled)

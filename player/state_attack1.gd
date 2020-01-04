@@ -17,7 +17,7 @@ const Attack = preload("res://player/attacks/player_attack1.tscn")
 
 
 ###################################################### enter
-func enter(data) -> void:
+func enter(_data) -> void:
 	# start the attack animation of the player
 	object.animation.play("attack1")
 	

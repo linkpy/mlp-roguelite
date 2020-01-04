@@ -21,5 +21,5 @@ func _physics_process(dt: float) -> void:
 ###
 ### \note This callback is connected as oneshot.
 ###
-func _on_player_sighted(p):
+func _on_player_sighted(_p):
 	controller.state = "chase"

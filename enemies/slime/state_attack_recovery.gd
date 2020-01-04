@@ -13,5 +13,5 @@ extends FSM_State
 
 
 ###################################################### enter
-func enter(data) -> void:
+func enter(_data) -> void:
 	object.animation.play("attack_recovery")

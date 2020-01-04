@@ -12,7 +12,7 @@ extends FSM_State
 
 
 ###################################################### enter
-func enter(data) -> void:
+func enter(_data) -> void:
 	var direction = sign(
 		  object.player.position.x
 		- object.position.x

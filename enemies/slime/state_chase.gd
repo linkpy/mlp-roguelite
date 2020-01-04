@@ -16,7 +16,7 @@ export var player_attack_range: float = 96
 
 
 ###################################################### enter
-func enter(data) -> void:
+func enter(_data) -> void:
 	object.animation.play("chase")
 	object.sprite.flip_h = false
 

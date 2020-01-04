@@ -27,7 +27,7 @@ var controller = null
 ###
 ### \param data : Additional data for the state.
 ###
-func enter(data) -> void:
+func enter(_data) -> void:
 	pass
 
 ############################################################

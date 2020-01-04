@@ -11,7 +11,7 @@ extends FSM_State
 
 
 ################################################### _process
-func _process( dt: float ) -> void:
+func _process(_dt: float) -> void:
 	# animation control
 	if object.is_on_floor():
 		control_walk_animation()
