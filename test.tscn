@@ -36,18 +36,18 @@ position = Vector2( 82, 248 )
 
 [node name="camera_focus_rect" parent="." instance=ExtResource( 5 )]
 position = Vector2( 924, 132 )
-enabled = true
+enabled = false
 half_extents = Vector2( 36, 36 )
 distance = 20.0
 
 [node name="camera_focus_point" parent="." instance=ExtResource( 3 )]
 position = Vector2( 360, 95 )
-enabled = true
+enabled = false
 distance = 10.0
 
 [node name="camera_focus_point2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 918, 574 )
-enabled = true
+enabled = false
 distance = 15.0
 
 [node name="camera" parent="." instance=ExtResource( 4 )]
