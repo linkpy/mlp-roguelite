@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
+"base": "Reference",
 "class": "BaseKinematic",
 "language": "GDScript",
-"path": "res://scripts/physics/base_kinematic.gd"
+"path": "res://scripts/entity/base_kinematic.gd"
 }, {
 "base": "Position2D",
 "class": "CameraFocusPoint",
