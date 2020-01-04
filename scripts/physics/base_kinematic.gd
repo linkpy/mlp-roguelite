@@ -21,7 +21,7 @@ var velocity: Vector2 = Vector2()
 ### \param dir : Direction of the impulse.
 ### \param force : Impulse's force.
 ###
-func impule(dir: Vector2, force: float) -> void:
+func impulse(dir: Vector2, force: float) -> void:
 	var vel_diff = dir.normalized() * force
 	velocity += vel_diff
 
