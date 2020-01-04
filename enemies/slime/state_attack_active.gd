@@ -18,14 +18,16 @@ var attack_done: bool = false
 
 ###################################################### enter
 func enter(_data) -> void:
-	var direction = sign(
-		  object.player.position.x
-		- object.position.x
-	)
+	var direction = 1
+	
+	if object.sprite.flip_h:
+		direction = -1
+	
 	
 	object.animation.stop()
 	object.sprite.animation = "attack_active"
 	object.sprite.frame = 0
+	object.sprite.flip_h = false
 	
 	object.impulse( 
 		Vector2(1, 0).rotated(-PI/6) * Vector2(direction, 1),

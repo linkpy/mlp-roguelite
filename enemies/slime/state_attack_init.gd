@@ -21,10 +21,6 @@ func enter(_data) -> void:
 	else:
 		object.sprite.flip_h = false
 
-####################################################### exit
-func exit() -> void:
-	object.sprite.flip_h = false
-
 
 
 ########################################### _physics_process
