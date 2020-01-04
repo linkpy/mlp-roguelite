@@ -29,7 +29,7 @@
 [sub_resource type="Resource" id=9]
 script = ExtResource( 25 )
 max_health_ = 10.0
-attack_ = 0.0
+attack_ = 2.0
 movement_speed_ = 3.0
 jump_force_ = 14.0
 
