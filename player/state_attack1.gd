@@ -23,6 +23,7 @@ func enter(data) -> void:
 	
 	# create the attack instance
 	var a = Attack.instance()
+	a.player = object
 	a.position = object.position
 	
 	# flip it to face the player's direction

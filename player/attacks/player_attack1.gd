@@ -9,10 +9,19 @@ extends Area2D
 
 
 
+### \description Player instance.
+var player
+
+
+
 ############################################################
 ### \describe Executes the attack.
 ###
 func do_attack() -> void:
 	# applies damages to enemies in the area
 	for body in get_overlapping_bodies():
-		pass
+		if body.has_method("apply_damages"):
+			body.apply_damages(
+				player,
+				player.stats.get_attack()
+			)
