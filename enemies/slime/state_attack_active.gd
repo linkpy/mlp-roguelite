@@ -22,9 +22,10 @@ func enter(data) -> void:
 	object.sprite.animation = "attack_active"
 	object.sprite.frame = 0
 	
-	object.velocity.y -= object.attack_impulse
-	object.velocity.x = direction * object.attack_speed
-
+	object.impulse( 
+		Vector2(1, 0).rotated(-PI/6) * Vector2(direction, 1),
+		object.attack_impulse
+	)
 
 
 ########################################### _physics_process

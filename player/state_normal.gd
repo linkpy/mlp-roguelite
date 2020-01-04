@@ -30,7 +30,7 @@ func _process( dt: float ) -> void:
 func _input( ev: InputEvent ) -> void:
 	if object.is_on_floor():
 		if ev.is_action_pressed("jump"):
-			object.velocity.y -= object.jump_impulse
+			object.impulse(Vector2(0, -1), object.jump_impulse)
 		
 		elif ev.is_action_pressed("attack"):
 			controller.state = "attack1"
