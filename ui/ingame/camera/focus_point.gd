@@ -1,4 +1,11 @@
+### \description Camera focus point.
+###
+### This object is a focus object used by the camera.
+### See FocusBasedCamera for more information on how the 
+### camera system works.
+###
 tool
+class_name CameraFocusPoint
 extends Position2D
 
 

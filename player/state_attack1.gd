@@ -1,5 +1,17 @@
+### \description First attack state of the player.
+###
+### \note The state is entered when the player presses the
+###       attack button while in the 'normal' state.
+###
+### \note The state is exited when the animation 'attack1'
+###       is finished. The animation player switches the 
+###       state using a function call track.
+###
 extends FSM_State
 
+
+
+### \description Player attack scene.
 const Attack = preload("res://player/attacks/player_attack1.tscn")
 
 

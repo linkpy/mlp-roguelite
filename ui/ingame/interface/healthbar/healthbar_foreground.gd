@@ -1,4 +1,7 @@
+### \description Foreground of the player's health bar.
+###
 extends Control
+
 
 
 ### \description Texture to use

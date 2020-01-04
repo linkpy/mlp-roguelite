@@ -1,5 +1,20 @@
+### \description Finite State Machine controller.
+###
+### The FSM controller implements state switching, state
+### processes control and an initial state entered in the
+### `_ready` callback.
+###
+### When the current state is switched, the current state's
+### `exit` method is called and its processes are disabled, 
+### the current state is switched internaly, the new state's
+### `enter` method is called and its processes are enabled.
+###
+### \note It is possible to switch from/to a `null` state
+###       by using an empty string (`""`) as the state name.
+###
 class_name FSM
 extends Node
+
 
 
 ### \description Initial state of the FSM.

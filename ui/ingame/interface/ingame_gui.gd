@@ -1,4 +1,9 @@
+### \description Ingame GUI controller.
+###
+### This class manage the ingame GUI.
+###
 extends Control
+
 
 
 ### \description Path to the player node

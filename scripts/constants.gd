@@ -1,3 +1,7 @@
+### \description Global constants.
+###
+### This script contains globally used constants.
+###
 class_name Constants
 extends Object
 

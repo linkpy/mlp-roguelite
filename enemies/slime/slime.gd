@@ -1,4 +1,10 @@
+### \description Master script for the slime enemy
+###
+### \note The slime is mostly controlled throught its
+###       FSM controller.
+###
 extends "res://enemies/base/base.gd"
+
 
 
 ### \description Movement speed of the slime.

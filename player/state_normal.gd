@@ -1,3 +1,11 @@
+### \description Normal/default state of the player.
+###
+### \note The state is entered as the default state of the 
+###       FSM controller.
+###
+### \note The state is exited when the player attack or
+###       when it receives damages.
+###
 extends FSM_State
 
 

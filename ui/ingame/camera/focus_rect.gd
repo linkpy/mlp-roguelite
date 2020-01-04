@@ -1,5 +1,14 @@
+### \description Camera focus rectangle.
+###
+### Work in the same way as a `CameraFocusPoint`, but 
+### represents a rectangle instead of a single point.
+### See `FocusBasedCamera` for more information about the
+### camera system.
+###
 tool
+class_name CameraFocusRectangle
 extends Position2D
+
 
 
 ### \description Enables or not the focus point.

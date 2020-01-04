@@ -1,3 +1,8 @@
+### \description Master script of the player.
+###
+### \note The player is mostly controlled throught its FSM 
+###       controller.
+###
 extends "res://scripts/physics/base_kinematic.gd"
 
 

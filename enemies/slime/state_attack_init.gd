@@ -1,3 +1,12 @@
+### \description Init Attack state of the slime.
+###
+### \note The state is entered when the state `chase` 
+###       detects the player to be close enough.
+###
+### \note The state is exited when the animation 
+###       'attack_init'is finished. The animation player
+###       switches the state throught a function call track.
+###
 extends FSM_State
 
 

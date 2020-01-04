@@ -1,5 +1,16 @@
+### \description A state used in a FSM controller.
+###
+### The state has two variables : the controlled object
+### (the parent of the FSM controller) and the FSM 
+### controller.
+###
+### The `enter` function is called when the state is entered
+### and the `exit` function is called when the state is 
+### exited.
+###
 class_name FSM_State
 extends Node
+
 
 
 ### \description Object using the FSM

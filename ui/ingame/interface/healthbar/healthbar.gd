@@ -1,3 +1,5 @@
+### \description Background of the player's health bar.
+###
 extends TextureRect
 
 

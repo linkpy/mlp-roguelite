@@ -1,4 +1,13 @@
+### \description Chase state of the slime.
+###
+### \note The state is entered when the player is detected
+###       by the slime (`player_sighted` signal emitted).
+###
+### \note The state is exited when the player is close 
+###       enough to start the attack.
+###
 extends FSM_State
+
 
 
 ### \description Player attack range.

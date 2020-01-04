@@ -1,3 +1,9 @@
+### \description Base class for all kinematic objects.
+###
+### It implements common movement code including gravity
+### and velocity. Velocity management is up to the inherited
+### classes.
+###
 class_name BaseKinematic
 extends KinematicBody2D
 

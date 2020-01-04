@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/physics/base_kinematic.gd"
 }, {
+"base": "Position2D",
+"class": "CameraFocusPoint",
+"language": "GDScript",
+"path": "res://ui/ingame/camera/focus_point.gd"
+}, {
+"base": "Position2D",
+"class": "CameraFocusRectangle",
+"language": "GDScript",
+"path": "res://ui/ingame/camera/focus_rect.gd"
+}, {
 "base": "Object",
 "class": "Constants",
 "language": "GDScript",
@@ -28,12 +38,20 @@ _global_script_classes=[ {
 "class": "FSM_State",
 "language": "GDScript",
 "path": "res://scripts/fsm/state.gd"
+}, {
+"base": "Camera2D",
+"class": "FocusBasedCamera",
+"language": "GDScript",
+"path": "res://ui/ingame/camera/camera.gd"
 } ]
 _global_script_class_icons={
 "BaseKinematic": "",
+"CameraFocusPoint": "",
+"CameraFocusRectangle": "",
 "Constants": "",
 "FSM": "",
-"FSM_State": ""
+"FSM_State": "",
+"FocusBasedCamera": ""
 }
 
 [application]
