@@ -3,16 +3,9 @@
 ### \note The player is mostly controlled throught its FSM 
 ###       controller.
 ###
-extends "res://scripts/physics/base_kinematic.gd"
+extends "res://scripts/entity/base_entity.gd"
 
 
-
-### \description Movement speed of the player
-export var movement_speed: float = 5 # m/s
-### \description Acceleration amount of the player's jump.
-export var jump_impulse: float = 12 # m/s²
-### \description Maximum health of the player
-export var maximum_health: float = 100
 
 ### \description FSM of the player
 onready var fsm = $fsm
@@ -20,15 +13,6 @@ onready var fsm = $fsm
 onready var sprite = $sprite
 ### \description Animation controller of the player.
 onready var animation = $animation
-
-### \description Health of the player
-var health = 0
-
-
-
-##################################################### _ready
-func _ready() -> void:
-	health = maximum_health
 
 
 

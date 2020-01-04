@@ -30,7 +30,10 @@ func _process( dt: float ) -> void:
 func _input( ev: InputEvent ) -> void:
 	if object.is_on_floor():
 		if ev.is_action_pressed("jump"):
-			object.impulse(Vector2(0, -1), object.jump_impulse)
+			object.impulse(
+				Vector2(0, -1), 
+				object.stats.get_jump_force()
+			)
 		
 		elif ev.is_action_pressed("attack"):
 			controller.state = "attack1"
@@ -41,7 +44,11 @@ func _input( ev: InputEvent ) -> void:
 func _physics_process( dt: float ) -> void:
 	var mov_vec = object.get_movement_input_vector()
 	
-	object.velocity.x = mov_vec.x * object.movement_speed
+	object.velocity.x = (
+		  mov_vec.x 
+		* object.stats.get_movement_speed()
+	)
+	
 	object.move( dt )
 
 

@@ -3,6 +3,7 @@
 extends "res://scripts/entity/base_kinematic.gd"
 
 
+
 ### \description Stats resource.
 export(Resource) var stats
 
