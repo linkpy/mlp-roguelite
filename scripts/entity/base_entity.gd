@@ -14,7 +14,7 @@ const DamageIndicator = preload("res://ui/ingame/damage_indicator/damage_indicat
 export(Resource) var stats
 
 ### \description Health of the entity.
-var health
+var health: float
 
 
 
