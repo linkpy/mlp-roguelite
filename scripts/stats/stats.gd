@@ -37,28 +37,39 @@ func initialize() -> void:
 	movement_speed = StatsProperty.new(movement_speed_, 0, 0)
 	jump_force = StatsProperty.new(jump_force_, 0, 0)
 
+############################################################
+### \description Return true if the stats object is ready
+###              to be used.
+###
+func is_initiliazed() -> bool:
+	return max_health != null
+
 
 
 ############################################################
 ### \description Get the max health's value.
 ###
 func get_max_health() -> float:
+	if not is_initiliazed():	initialize()
 	return max_health.value()
 
 ############################################################
 ### \description Get the attack's value.
 ###
 func get_attack() -> float:
+	if not is_initiliazed():	initialize()
 	return attack.value()
 
 ############################################################
 ### \description Get the movement speed's value.
 ###
 func get_movement_speed() -> float:
+	if not is_initiliazed():	initialize()
 	return movement_speed.value()
 
 ############################################################
 ### \description Get the jump force's value.
 ###
 func get_jump_force() -> float:
+	if not is_initiliazed():	initialize()
 	return jump_force.value()
