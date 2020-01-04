@@ -5,6 +5,11 @@ extends "res://scripts/entity/base_kinematic.gd"
 
 
 
+### \description Damage indicator scene.
+const DamageIndicator = preload("res://ui/ingame/damage_indicator/damage_indicator.tscn")
+
+
+
 ### \description Stats resource.
 export(Resource) var stats
 
@@ -45,6 +50,7 @@ func is_dead() -> bool:
 ###
 func apply_damages(origin, amnt: float) -> void:
 	emit_signal("damaged", origin, amnt)
+	_spawn_damage_indicator(amnt, Color.red)
 	
 	health = max(0, health - amnt)
 	
@@ -59,5 +65,19 @@ func apply_damages(origin, amnt: float) -> void:
 ###
 func apply_healing(origin, amnt: float) -> void:
 	emit_signal("healed", origin, amnt)
+	_spawn_damage_indicator(amnt, Color.green)
 	
 	health = min(stats.get_maximum_health(), health + amnt)
+
+
+
+############################################################
+### \description Spawn a damage indicator.
+###
+func _spawn_damage_indicator(amnt: float, col: Color) -> void:
+	var inst = DamageIndicator.instance()
+	inst.position = position
+	inst.value = amnt
+	inst.modulate = col
+	
+	get_parent().add_child(inst)
