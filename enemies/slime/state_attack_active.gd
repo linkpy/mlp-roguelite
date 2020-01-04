@@ -11,6 +11,11 @@ extends FSM_State
 
 
 
+### \description True if the player was already damaged.
+var attack_done: bool = false
+
+
+
 ###################################################### enter
 func enter(_data) -> void:
 	var direction = sign(
@@ -26,10 +31,19 @@ func enter(_data) -> void:
 		Vector2(1, 0).rotated(-PI/6) * Vector2(direction, 1),
 		object.stats.get_jump_force()
 	)
+	
+	attack_done = false
 
 
 ########################################### _physics_process
 func _physics_process(dt: float) -> void:
+	if not attack_done and _check_for_player():
+		attack_done = true
+		object.player.apply_damages(
+			object,
+			object.stats.get_attack()
+		)
+	
 	if object.velocity.y <= -1.5:
 		object.sprite.frame = 0
 	elif abs(object.velocity.y) < 1.5:
@@ -41,3 +55,21 @@ func _physics_process(dt: float) -> void:
 	
 	if object.is_on_floor():
 		controller.state = "attack_recovery"
+
+
+
+############################################################
+### \description Check if the slime hits the player.
+###
+func _check_for_player() -> bool:
+	var dss = object.get_world_2d().direct_space_state
+	var hit = dss.intersect_ray(
+		object.position, object.position + Vector2(1,1),
+		[], 0x2
+	)
+	
+	if not hit.empty():
+		if hit.collider.is_in_group("player"):
+			return true
+	
+	return false
