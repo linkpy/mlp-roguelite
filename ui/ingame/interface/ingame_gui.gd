@@ -21,7 +21,7 @@ func _ready():
 	player.connect("damaged", self, "_update_health_bar")
 	player.connect("healed", self, "_update_health_bar")
 	
-	_update_health_bar(null, null)
+	call_deferred("_update_health_bar", null, null)
 
 
 
