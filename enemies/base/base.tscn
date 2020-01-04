@@ -14,4 +14,6 @@ collision_mask = 2
 
 [node name="shape" type="CollisionShape2D" parent="player_detection"]
 shape = SubResource( 1 )
+[connection signal="damaged" from="." to="." method="_on_health_changed"]
+[connection signal="healed" from="." to="." method="_on_health_changed"]
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
