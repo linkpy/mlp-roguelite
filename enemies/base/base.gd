@@ -11,7 +11,7 @@
 ###       player detection range must be set from the 
 ###       inherited class using set_player_detection_radius.
 ### 
-extends "res://scripts/physics/base_kinematic.gd"
+extends "res://scripts/entity/base_entity.gd"
 
 
 
