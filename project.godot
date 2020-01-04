@@ -82,11 +82,9 @@ config/icon="res://icon.png"
 
 window/size/width=480
 window/size/height=270
-window/size/resizable=false
 window/size/test_width=960
 window/size/test_height=540
-window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/shrink=2.0
 
 [importer_defaults]
 
@@ -159,3 +157,4 @@ quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

@@ -142,10 +142,7 @@ func get_maximum_position(objs) -> Vector2:
 ###              on the target rectangle.
 ###
 func compute_zoom_factor(target_rect: Rect2) -> float:
-	var vp_size = Vector2(
-		ProjectSettings.get_setting("display/window/size/width"),
-		ProjectSettings.get_setting("display/window/size/height")
-	)
+	var vp_size = get_viewport_rect().size
 	var tr_size = target_rect.size + Vector2(margin, margin) * 2
 	
 	var f = minimum_zoom
