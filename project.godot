@@ -43,6 +43,16 @@ _global_script_classes=[ {
 "class": "FocusBasedCamera",
 "language": "GDScript",
 "path": "res://ui/ingame/camera/camera.gd"
+}, {
+"base": "Resource",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://scripts/stats/stats.gd"
+}, {
+"base": "Reference",
+"class": "StatsProperty",
+"language": "GDScript",
+"path": "res://scripts/stats/property.gd"
 } ]
 _global_script_class_icons={
 "BaseKinematic": "",
@@ -51,7 +61,9 @@ _global_script_class_icons={
 "Constants": "",
 "FSM": "",
 "FSM_State": "",
-"FocusBasedCamera": ""
+"FocusBasedCamera": "",
+"Stats": "",
+"StatsProperty": ""
 }
 
 [application]
