@@ -17,7 +17,11 @@ var velocity: Vector2 = Vector2()
 ############################################################
 ### \description Move the kinematic object.
 ###
-func move(dt: float) -> void:
+### \param dt : Delta time.
+### \parma hbounce : True if the object should bounce when
+###        colliding with a wall.
+###
+func move(dt: float, hbounce: bool = false) -> void:
 	# update the player's velocity
 	velocity.y += Constants.Gravity * dt
 	
@@ -32,4 +36,8 @@ func move(dt: float) -> void:
 	for i in range(get_slide_count()):
 		var c = get_slide_collision(i)
 		
-		velocity = velocity.slide(c.normal)
+		# if the object hit a wall and should bounce
+		if c.normal.abs() == Vector2(1, 0) and hbounce:
+			velocity.x *= -1
+		else:
+			velocity = velocity.slide(c.normal)
