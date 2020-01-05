@@ -26,14 +26,14 @@
 [ext_resource path="res://enemies/slime/state_attack_recovery.gd" type="Script" id=24]
 [ext_resource path="res://scripts/stats/stats.gd" type="Script" id=25]
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 25 )
 max_health_ = 10.0
 attack_ = 2.0
 movement_speed_ = 3.0
 jump_force_ = 14.0
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
 "loop": true,
@@ -45,9 +45,9 @@ animations = [ {
 "name": "hurt",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "attack_recovery",
+"name": "attack_active",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 11 ) ],
@@ -55,16 +55,16 @@ animations = [ {
 "name": "attack_init",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 9 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "attack_active",
+"name": "attack_recovery",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 12, 8 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:animation")
@@ -105,7 +105,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 length = 1.2
 step = 0.4
 tracks/0/type = "value"
@@ -147,7 +147,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 step = 0.2
@@ -176,7 +176,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:animation")
@@ -236,7 +236,7 @@ tracks/1/keys = {
 collision_layer = 4
 collision_mask = 2049
 script = ExtResource( 19 )
-stats = SubResource( 9 )
+stats = SubResource( 1 )
 player_detect_range = 196.0
 
 [node name="fsm" type="Node" parent="." index="1"]
@@ -263,21 +263,21 @@ script = ExtResource( 22 )
 
 [node name="sprite" type="AnimatedSprite" parent="." index="2"]
 position = Vector2( 0, -5 )
-frames = SubResource( 10 )
+frames = SubResource( 2 )
 animation = "attack_recovery"
 frame = 2
 
 [node name="shape" type="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, -1 )
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 
 [node name="animation" type="AnimationPlayer" parent="." index="4"]
 autoplay = "idle"
-anims/attack_init = SubResource( 12 )
-anims/attack_recovery = SubResource( 13 )
-anims/chase = SubResource( 14 )
-anims/hurt = SubResource( 15 )
+anims/attack_init = SubResource( 4 )
+anims/attack_recovery = SubResource( 5 )
+anims/chase = SubResource( 6 )
+anims/hurt = SubResource( 7 )
 anims/idle = SubResource( 8 )
 [connection signal="killed" from="." to="." method="_on_killed" flags=6]
-[connection signal="player_sighted" from="." to="." method="_on_player_sighted" flags=6]
 [connection signal="player_sighted" from="." to="fsm/idle" method="_on_player_sighted" flags=6]
+[connection signal="player_sighted" from="." to="." method="_on_player_sighted" flags=6]

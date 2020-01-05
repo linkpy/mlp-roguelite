@@ -28,6 +28,8 @@ export var health_bar_offset: float = 16
 
 ### \description Player detection area
 onready var player_detection = $player_detection
+### \description Level controller.
+onready var level: Level = get_parent()
 
 
 
