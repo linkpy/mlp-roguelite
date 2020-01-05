@@ -1,14 +1,19 @@
+### \description Level master script.
+###
 class_name Level
 extends Node2D
 
 
 
+### \description Tilemap of the level.
 onready var tilemap: TileMap = $map
 
+### \description AStar2D instance.
 var astar: AStar2D = null
 
 
 
+##################################################### _ready
 func _ready() -> void:
 	var gen = AStarGenerator.new(tilemap)
 	
@@ -22,7 +27,7 @@ func _ready() -> void:
 	
 	update()
 
-
+###################################################### _draw
 func _draw():
 	if not Constants.PathfindingDebug:
 		return
@@ -41,3 +46,14 @@ func _draw():
 				Color.magenta,
 				1
 			)
+
+
+
+############################################################
+### \description Get a path using the A* pathfinder.
+###
+func get_astar_path(from: Vector2, to: Vector2):
+	var fid = astar.get_closest_point(from)
+	var tid = astar.get_closest_point(to)
+	
+	return Array(astar.get_point_path(fid, tid))
