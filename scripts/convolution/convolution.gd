@@ -46,7 +46,7 @@ var checkers: Array = []
 ############################################################
 ### \description Add an input to the convolution algo.
 ###
-func add_input(inp: CInput):
+func add_input(inp):
 	inputs.push_back(inp)
 	return self
 
@@ -56,11 +56,11 @@ func add_input(inp: CInput):
 ### \note The callback is called when the associated checker
 ###       detects a pattern.
 ###
-func add_checker(chk: Checker, cb: FuncRef):
+func add_checker(chk, cb: FuncRef, hint = null):
 	if cb != null:
 		assert(cb.is_valid())
 	
-	checkers.push_back([chk, cb])
+	checkers.push_back([chk, cb, hint])
 	return self
 
 
@@ -76,13 +76,14 @@ func process(positions: Array) -> void:
 		for checker in checkers:
 			var chk = checker[0]
 			var cb = checker[1]
+			var hint = checker[2]
 			
 			if chk.check(pos, chk_ifn):
 				if cb != null:
 					if not cb.is_valid():
 						printerr("The callback shouldn't be invalid.")
 					else:
-						cb.call_func(pos)
+						cb.call_func(pos, hint)
 
 
 
