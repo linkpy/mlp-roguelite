@@ -40,3 +40,9 @@ func _on_player_sighted(p):
 ###
 func _on_killed(_origin):
 	queue_free()
+
+############################################################
+### \description Called hwen the slime receive damages.
+###
+func _on_damaged(_origin, _amnt):
+	fsm.state = "hurt"

@@ -202,6 +202,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("fsm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "chase" ],
+"method": "set_state"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.8
@@ -264,8 +278,8 @@ script = ExtResource( 22 )
 [node name="sprite" type="AnimatedSprite" parent="." index="2"]
 position = Vector2( 0, -5 )
 frames = SubResource( 2 )
-animation = "attack_recovery"
-frame = 2
+animation = "hurt"
+frame = 4
 
 [node name="shape" type="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, -1 )
@@ -278,6 +292,7 @@ anims/attack_recovery = SubResource( 5 )
 anims/chase = SubResource( 6 )
 anims/hurt = SubResource( 7 )
 anims/idle = SubResource( 8 )
+[connection signal="damaged" from="." to="." method="_on_damaged"]
 [connection signal="killed" from="." to="." method="_on_killed" flags=6]
 [connection signal="player_sighted" from="." to="fsm/idle" method="_on_player_sighted" flags=6]
 [connection signal="player_sighted" from="." to="." method="_on_player_sighted" flags=6]
