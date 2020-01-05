@@ -61,6 +61,7 @@ func _generate_nodes() -> Array:
 	for pos in positions:
 		ids[pos] = id
 		astar.add_point(id, pos)
+		id += 1
 	
 	return positions
 
@@ -148,7 +149,7 @@ func _add_convolution_grid_checker_with_hflip(g: Array, cb: FuncRef):
 	var flipped = grid.flip_h()
 	
 	convolution.add_checker(grid, cb, "")
-	convolution.add_checker(grid, cb, "f")
+	convolution.add_checker(flipped, cb, "f")
 
 
 

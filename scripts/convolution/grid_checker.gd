@@ -42,7 +42,7 @@ func flip_h():
 		
 		newgrid.push_back(newline)
 	
-	return .new(newgrid)
+	return get_script().new(newgrid)
 
 ############################################################
 ### \description Create a new instance with the same grip
