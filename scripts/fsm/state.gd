@@ -37,3 +37,12 @@ func enter(_data) -> void:
 ###
 func exit():
 	pass
+
+
+
+############################################################
+### \description Retruns true if the state is the current
+###              active state.
+###
+func is_active() -> bool:
+	return controller.current_state == self
