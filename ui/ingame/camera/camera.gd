@@ -45,8 +45,8 @@ func _ready() -> void:
 
 
 
-################################################### _process
-func _process(_dt: float) -> void:
+########################################### _physics_process
+func _physics_process(_dt: float) -> void:
 	var close_objs = get_close_focus_objects()
 	var target_rect = get_enclosing_rect(close_objs)
 	
