@@ -14,7 +14,7 @@ extends Object
 const CameraDebug = false
 
 ### \description Enable debug mode for the pathfinding.
-const PathfindingDebug = true
+const PathfindingDebug = false
 
 
 
