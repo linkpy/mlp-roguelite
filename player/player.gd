@@ -38,3 +38,13 @@ func get_movement_input_vector() -> Vector2:
 		m.y += 1
 	
 	return m
+
+
+
+############################################################
+### \description Called when the player receives damages.
+###
+func _on_damaged(origin, amnt):
+	fsm.state = "hurt"
+	
+	sprite.flip_h = origin.position.x < position.x

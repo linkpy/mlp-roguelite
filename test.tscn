@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://world/tileset/earth.tres" type="TileSet" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ui/ingame/camera/camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/ingame/camera/focus_rect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/ingame/interface/ingame_gui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/slime/slime.tscn" type="PackedScene" id=7]
 [ext_resource path="res://world/level/level.gd" type="Script" id=8]
 
 [node name="test" type="Node2D"]
@@ -55,3 +56,6 @@ distance = 15.0
 [node name="camera" parent="." instance=ExtResource( 4 )]
 current = true
 player_path = NodePath("../player")
+
+[node name="slime" parent="." instance=ExtResource( 7 )]
+position = Vector2( 404, 242 )
