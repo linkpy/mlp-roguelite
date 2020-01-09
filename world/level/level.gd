@@ -15,6 +15,8 @@ var astar: AStar2D = null
 
 ##################################################### _ready
 func _ready() -> void:
+	_pre_ready()
+	
 	var gen = AStarGenerator.new(tilemap)
 	
 	var start_time = OS.get_ticks_usec()
@@ -26,6 +28,13 @@ func _ready() -> void:
 	)
 	
 	update()
+
+############################################################
+### \description Called before _ready.
+### 
+func _pre_ready() -> void:
+	pass
+
 
 ###################################################### _draw
 func _draw():
