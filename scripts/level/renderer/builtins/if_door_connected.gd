@@ -5,7 +5,7 @@
 ### given door is (not) connected.
 ###
 class_name LevelRenderNode_IfDoorConnected
-extends LevelRenderNode
+extends LevelRenderNode_BasicRenderer
 
 
 

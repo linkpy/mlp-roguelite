@@ -5,7 +5,7 @@
 ### room doesn't have any room connected to its entry doors.
 ###
 class_name LevelRenderNode_IfFirstRoom
-extends LevelRenderNode
+extends LevelRenderNode_BasicRenderer
 
 
 
