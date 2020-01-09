@@ -36,6 +36,8 @@ func generate(length: int) -> RoomInstance:
 func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: int) -> RoomInstance:
 	# if we are at the end of the generation
 	if length == 0:
+		if Constants.LevelGenerationDebug:
+			print("LevelGeneration: Rejected (length = 0)")
 		return null
 	
 	# room generated in this function
@@ -50,6 +52,8 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 	
 	# if the generated room overlaps another room
 	if supervisor.does_room_overlap(room_inst):
+		if Constants.LevelGenerationDebug:
+			print("LevelGeneration: Rejected (supervisor)")
 		return null
 	
 	# we register the room
@@ -57,6 +61,15 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 	
 	# we generate rooms for the exit doors
 	_generate_exit_rooms(room_inst, length)
+	
+	if Constants.LevelGenerationDebug:
+		print(
+			"LevelGeneration: Accepted (", 
+			room_inst, 
+			", def : ",
+			room_inst.definition,
+			")"
+		)
 	
 	return room_inst
 
@@ -80,7 +93,7 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 	var rd = d.reverse()
 	
 	# if no room exists with the entry door
-	if not pool.has_room_with_door(rd.direction, rd.side):
+	if not pool.has_rooms_with_door(rd.direction, rd.side):
 		return null
 	
 	# we create the room instance
@@ -105,7 +118,7 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 	inst.position = (
 		  p.position
 		+ d.get_position_in_space(p.definition.size)
-		- door.get_position(inst.definition.size)
+		- door.get_position_in_space(inst.definition.size)
 		+ d.get_side_normal()
 	)
 	
