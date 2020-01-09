@@ -97,8 +97,9 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 		rd.direction,
 		rd.side
 	)
+	var door_idx = randi() % doors.size()
 	# we select one at random
-	var door = doors[randi() % doors.size()]
+	var door = doors[door_idx]
 	
 	# we correctly place the room
 	inst.position = (
@@ -107,6 +108,8 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 		- door.get_position(inst.definition.size)
 		+ d.get_side_normal()
 	)
+	
+	inst.connect_room(door_idx, p)
 	
 	# we return the generated room
 	return inst
