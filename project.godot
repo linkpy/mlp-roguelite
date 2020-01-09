@@ -77,7 +77,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "LevelBuilder",
 "language": "GDScript",
-"path": "res://scripts/level/builder.gd"
+"path": "res://scripts/level/level_builder.gd"
 }, {
 "base": "Reference",
 "class": "LevelGenerationSupervisor",
@@ -98,6 +98,11 @@ _global_script_classes=[ {
 "class": "LevelRenderNode_IfDoorConnected",
 "language": "GDScript",
 "path": "res://scripts/level/renderer/builtins/if_door_connected.gd"
+}, {
+"base": "LevelRenderNode",
+"class": "LevelRenderNode_IfFirstRoom",
+"language": "GDScript",
+"path": "res://scripts/level/renderer/builtins/if_first_room.gd"
 }, {
 "base": "Reference",
 "class": "LevelRenderTarget",
@@ -163,6 +168,7 @@ _global_script_class_icons={
 "LevelRenderNode": "",
 "LevelRenderNode_BasicRenderer": "",
 "LevelRenderNode_IfDoorConnected": "",
+"LevelRenderNode_IfFirstRoom": "",
 "LevelRenderTarget": "",
 "LinearLevelGenerator": "",
 "RoomDefinition": "",
