@@ -26,7 +26,7 @@
 ###    ^
 ###
 class_name RoomDoorDefinition
-extends Reference
+extends Resource
 
 
 
@@ -73,27 +73,28 @@ static func side_normal(s: int) -> Vector2:
 
 
 ### \description Direction of the door (entry/exit)
-var direction: int
+export(Direction) var direction: int
 ### \description On which side of the room the door is.
-var side: int
+export(Side) var side: int
 ### \description Position of the door relative to left/top.
-var position: int
+export(int) var position: int
 
 
 
 ###################################################### _init
-func _init(dir: int, sid: int, pos: int) -> void:
-	if dir < Direction.Entry or dir > Direction.Exit:
-		printerr("Invalid `Direction` value.")
-		assert(false)
-		
-	if sid < Side.Right or sid > Side.Top:
-		printerr("Invalid `Side` value.")
-		assert(false)
-	
-	direction = dir
-	side = sid
-	position = pos
+# shouldn't be needed
+#func _init(dir: int, sid: int, pos: int) -> void:
+#	if dir < Direction.Entry or dir > Direction.Exit:
+#		printerr("Invalid `Direction` value.")
+#		assert(false)
+#
+#	if sid < Side.Right or sid > Side.Top:
+#		printerr("Invalid `Side` value.")
+#		assert(false)
+#
+#	direction = dir
+#	side = sid
+#	position = pos
 
 
 

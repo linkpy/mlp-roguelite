@@ -5,21 +5,24 @@
 ###  2. Doors : The list of entry/exit doors of the room.
 ###  
 class_name RoomDefinition
-extends Reference
+extends Resource
 
 
 
 ### \description The side of the room.
-var size: Vector2
+export(Vector2) var size: Vector2
 ### \description The doors of the room.
-var doors: Array
+export(Array) var doors: Array
+### \description The room's render template.
+export(PackedScene) var render_template: PackedScene
 
 
 
 ###################################################### _init
-func _init(s: Vector2, ds: Array = []) -> void:
-	size = s
-	doors = ds
+# shouldn't be needed
+#func _init(s: Vector2, ds: Array = []) -> void:
+#	size = s
+#	doors = ds
 
 
 
@@ -31,8 +34,13 @@ func _init(s: Vector2, ds: Array = []) -> void:
 ### \param p : Position of the door on the side.
 ###
 func add_door(d: int, s: int, p: int):
+	var door = RoomDoorDefinition.new()
+	door.direction = d
+	door.side = s
+	door.position = p
+	
 	doors.push_back(
-		RoomDoorDefinition.new(d, s, p)
+		door
 	)
 	
 	return self
