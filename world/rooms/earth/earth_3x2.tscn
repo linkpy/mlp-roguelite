@@ -45,10 +45,7 @@ tile_data = PoolIntArray( 327694, 0, 5, 393230, 0, 65541, 458766, 0, 65541, 5243
 [node name="if_first_room" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="r" type="Node" parent="if_first_room"]
-script = ExtResource( 1 )
-
-[node name="player_spawn" type="Position2D" parent="if_first_room/r" groups=[
+[node name="player_spawn" type="Position2D" parent="if_first_room" groups=[
 "player-spawn",
 ]]
 position = Vector2( 178, 184 )
