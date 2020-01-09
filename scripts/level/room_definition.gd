@@ -56,7 +56,7 @@ func add_door(d: int, s: int, p: int):
 ###
 func has_door_on_side(d: int, s: int) -> bool:
 	for door in doors:
-		if door.dir == d and door.side == s:
+		if door.direction == d and door.side == s:
 			return true
 	
 	return false
@@ -72,7 +72,7 @@ func get_doors_on_side(d: int, s: int) -> Array:
 	var res = []
 	
 	for door in doors:
-		if door.dir == d and door.side == s:
+		if door.direction == d and door.side == s:
 			res.push_back(door)
 	
 	return res

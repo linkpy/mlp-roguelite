@@ -53,6 +53,6 @@ func does_room_overlap(ri: RoomInstance) -> bool:
 	
 	for pt in pts:
 		if is_point_in_room(pt):
-			return false
+			return true
 	
-	return true
+	return false

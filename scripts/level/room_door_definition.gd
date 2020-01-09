@@ -134,8 +134,10 @@ func get_side_normal() -> Vector2:
 ###       one is not modified.
 ###
 func reverse():
-	return get_script().new(
-		reverse_direction(direction),
-		reverse_side(side),
-		position
-	)
+	var r = get_script().new()
+	
+	r.direction = reverse_direction(direction)
+	r.side = reverse_side(side)
+	r.position = position
+	
+	return r
