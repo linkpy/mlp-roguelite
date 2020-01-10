@@ -39,6 +39,17 @@ func is_point_in_room(pt: Vector2) -> bool:
 	return false
 
 ############################################################
+### \description Checks if the given point is in a validated
+###              room.
+###
+func get_room_containing_point(pt: Vector2) -> RoomInstance:
+	for ri in rooms:
+		if ri.get_rectangle().has_point(pt):
+			return ri
+	
+	return null
+
+############################################################
 ### \description Checks if the given room overlaps any other
 ###              rooms.
 ###
@@ -57,8 +68,9 @@ func does_rect_overlap(r: Rect2) -> bool:
 ############################################################
 ### \description Generates the level with a given length.
 ###
-func generate(length: int) -> RoomInstance:
-	return _generate_recursive(null, null, length)
+func generate(length: int):
+	_generate_recursive(null, null, length)
+	_find_room_connections()
 
 
 
@@ -265,3 +277,63 @@ func _find_random_room(pri: RoomInstance, prd: RoomDoorDefinition) -> Array:
 			break
 	
 	return prooms[randi() % prooms.size()]
+
+
+
+############################################################
+### \description Finds all room connections.
+###
+func _find_room_connections():
+	for room in rooms:
+		for door_idx in room.definition.doors.size():
+			_find_all_room_connections_for(room, door_idx)
+
+############################################################
+### \description Finds all room connections for the given 
+###              room.
+###
+func _find_all_room_connections_for(
+	room: RoomInstance, 
+	door_idx: int
+) -> void:
+	if room.has_connection(door_idx):
+		continue
+	
+	var door = room.definition.doors[door_idx]
+	var pos = (
+		  room.position 
+		+ door.get_position_in_space(
+			room.definition.size
+		)
+	)
+	
+	var r = get_room_containing_point(
+		pos + door.get_side_normal()
+	)
+	
+	if r != null:
+		_find_room_connections_between(room, door_idx, pos, r)
+
+############################################################
+### \description Finds all room connections for the given
+###              rooms.
+###
+func _find_room_connections_between(
+	room: RoomInstance,
+	door_idx: int,
+	pos: Vector2,
+	r: RoomInstance
+) -> void:
+	for di in r.definition.doors.size():
+		var d = r.definition.doors[di]
+		var dpos = (
+			  r.position
+			+ d.get_position_in_space(
+				r.definition.size
+			  ) 
+			+ d.get_side_normal()
+		)
+		
+		if dpos == pos:
+			room.connect_room(door_idx, r)
+			r.connect_room(di, room)
