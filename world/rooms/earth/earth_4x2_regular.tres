@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/level/room_door_definition.gd" type="Script" id=1]
+[ext_resource path="res://scripts/level/room_definition.gd" type="Script" id=2]
+[ext_resource path="res://world/rooms/earth/earth_4x2_regular.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+direction = 0
+side = 2
+position = 1
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+direction = 1
+side = 0
+position = 1
+
+[resource]
+script = ExtResource( 2 )
+size = Vector2( 4, 2 )
+doors = [ SubResource( 1 ), SubResource( 2 ) ]
+render_template = ExtResource( 3 )
+can_be_first = true
+is_special = false

@@ -7,9 +7,13 @@ extends Object
 
 ### \description Earth area rooms
 const Earth = [
-	preload("./earth/earth_3x2.tres"),
-	preload("./earth/earth_3x3.tres"),
-	preload("./earth/earth_4x2.tres"),
+	preload("./earth/earth_3x2_regular.tres"),
+	preload("./earth/earth_3x3_regular.tres"),
+	preload("./earth/earth_3x5_regular.tres"),
+	preload("./earth/earth_4x2_regular.tres"),
+	preload("./earth/earth_4x3_regular.tres"),
+	
+	preload("./earth/earth_3x3_challenge.tres")
 ]
 
 

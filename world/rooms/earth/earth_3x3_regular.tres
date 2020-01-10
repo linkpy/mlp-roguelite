@@ -1,35 +1,37 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
-[ext_resource path="res://scripts/level/room_definition.gd" type="Script" id=1]
-[ext_resource path="res://scripts/level/room_door_definition.gd" type="Script" id=2]
-[ext_resource path="res://world/rooms/earth/earth_3x3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/level/room_door_definition.gd" type="Script" id=1]
+[ext_resource path="res://scripts/level/room_definition.gd" type="Script" id=2]
+[ext_resource path="res://world/rooms/earth/earth_3x3_regular.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 direction = 0
 side = 2
 position = 0
 
 [sub_resource type="Resource" id=2]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 direction = 0
 side = 2
 position = 2
 
 [sub_resource type="Resource" id=3]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 direction = 1
 side = 0
 position = 0
 
 [sub_resource type="Resource" id=4]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 direction = 0
 side = 0
 position = 2
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 size = Vector2( 3, 3 )
 doors = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 render_template = ExtResource( 3 )
+can_be_first = true
+is_special = false
