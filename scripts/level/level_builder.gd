@@ -53,3 +53,5 @@ func _render_room(room: RoomInstance):
 	)
 	
 	renderer.render(room)
+	
+	renderer.free()

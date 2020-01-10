@@ -50,6 +50,9 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 	else:
 		room_inst = _generate_connected_room(prev, door)
 	
+	if room_inst == null:
+		return null
+	
 	# if the generated room overlaps another room
 	if supervisor.does_room_overlap(room_inst):
 		if Constants.LevelGenerationDebug:
@@ -78,10 +81,7 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 ###
 func _generate_first_room() -> RoomInstance:
 	return RoomInstance.new(
-		pool.get_random_room_with_door(
-			RoomDoorDefinition.Direction.Exit,
-			RoomDoorDefinition.Side.Right
-		),
+		pool.get_random_first_room(),
 		Vector2()
 	)
 

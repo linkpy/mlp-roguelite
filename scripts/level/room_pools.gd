@@ -50,6 +50,12 @@ func has_rooms_fitting_in(ms: Vector2) -> bool:
 func has_rooms_with_door_fitting_in(d: int, s: int, ms: Vector2) -> bool:
 	return get_rooms_with_door_fitting_in(d, s, ms).size() != 0
 
+############################################################
+### \description Checks if first rooms exist.
+###
+func has_first_rooms() -> bool:
+	return get_first_rooms().size() != 0
+
 
 
 ############################################################
@@ -130,6 +136,20 @@ func get_rooms_with_door_fitting_in(d: int, s: int, ms: Vector2) -> Array:
 	
 	return res
 
+############################################################
+### \description Gets all rooms which can be first in the 
+###              level.
+###
+func get_first_rooms() -> Array:
+	var res = []
+	
+	for rl in pools.values():
+		for r in rl:
+			if r.can_be_first:
+				res.push_back(r)
+	
+	return res
+
 
 
 ############################################################
@@ -171,6 +191,17 @@ func get_random_room_fitting_in(ms: Vector2) -> RoomDefinition:
 ###
 func get_random_room_with_door_fitting_in(d: int, s: int, ms: Vector2) -> RoomDefinition:
 	var l = get_rooms_with_door_fitting_in(d, s, ms)
+	
+	if l.size() == 0:
+		return null
+	
+	return l[randi() % l.size()]
+
+############################################################
+### \description Gets a random first room.
+###
+func get_random_first_room() -> RoomDefinition:
+	var l = get_first_rooms()
 	
 	if l.size() == 0:
 		return null

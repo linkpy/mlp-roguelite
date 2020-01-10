@@ -15,6 +15,11 @@ export(Vector2) var size: Vector2
 export(Array) var doors: Array
 ### \description The room's render template.
 export(PackedScene) var render_template: PackedScene
+### \description True if the room can be the first of the
+###              level.
+export(bool) var can_be_first: bool
+### \description Tue if the room can appear only once.
+export(bool) var is_special: bool
 
 
 
