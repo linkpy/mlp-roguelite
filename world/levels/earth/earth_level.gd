@@ -20,6 +20,7 @@ func _pre_ready():
 	
 	generator.generate(6)
 	builder.render_rooms(generator.rooms)
+	rooms = generator.rooms
 	
 	var spawn = get_tree().get_nodes_in_group("player-spawn")
 	if spawn.size() != 0:

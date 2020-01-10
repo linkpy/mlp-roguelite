@@ -10,7 +10,8 @@ onready var tilemap: TileMap = $map
 
 ### \description AStar2D instance.
 var astar: AStar2D = null
-
+### \description Room list, only set when the debug is enabled.
+var rooms: Array = []
 
 
 ##################################################### _ready
@@ -38,7 +39,7 @@ func _pre_ready() -> void:
 
 ###################################################### _draw
 func _draw():
-	if not Constants.PathfindingDebug:
+	if Constants.PathfindingDebug:
 		return
 	
 	for pt in astar.get_points():

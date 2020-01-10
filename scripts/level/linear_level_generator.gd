@@ -46,13 +46,8 @@ func does_room_overlap(ri: RoomInstance) -> bool:
 	return does_rect_overlap(ri.get_rectangle())
 
 func does_rect_overlap(r: Rect2) -> bool:
-	var pts = [
-		r.position, r.position + Vector2(r.size.x, 0),
-		r.end, r.position + Vector2(0, r.size.y)
-	]
-	
-	for pt in pts:
-		if is_point_in_room(pt):
+	for ri in rooms:
+		if ri.get_rectangle().intersects(r):
 			return true
 	
 	return false
@@ -60,7 +55,7 @@ func does_rect_overlap(r: Rect2) -> bool:
 
 
 ############################################################
-### \description
+### \description Generates the level with a given length.
 ###
 func generate(length: int) -> RoomInstance:
 	return _generate_recursive(null, null, length)
@@ -68,7 +63,7 @@ func generate(length: int) -> RoomInstance:
 
 
 ############################################################
-### \description
+### \description Recursive generation algorithm.
 ###
 func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: int) -> RoomInstance:
 	# if we are at the end of the generation
@@ -99,22 +94,22 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 	# we register the room
 	rooms.push_back(room_inst)
 	
+#	if Constants.LevelGenerationDebug:
+#		print(
+#			"LevelGeneration: Accepted (", 
+#			room_inst, 
+#			", def : ",
+#			room_inst.definition,
+#			")"
+#		)
+		
 	# we generate rooms for the exit doors
 	_generate_exit_rooms(room_inst, length)
-	
-	if Constants.LevelGenerationDebug:
-		print(
-			"LevelGeneration: Accepted (", 
-			room_inst, 
-			", def : ",
-			room_inst.definition,
-			")"
-		)
 	
 	return room_inst
 
 ############################################################
-### \description
+### \description Generates the first room of the level.
 ###
 func _generate_first_room() -> RoomInstance:
 	return RoomInstance.new(
@@ -123,7 +118,7 @@ func _generate_first_room() -> RoomInstance:
 	)
 
 ############################################################
-### \description
+### \description Generates a connected room of the level.
 ###
 func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomInstance:
 	# we reverse the exit door to have the new room entry door
@@ -159,19 +154,17 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 	return inst
 
 ############################################################
-### \description
+### \description Generates exit rooms.
 ###
 func _generate_exit_rooms(r: RoomInstance, length: int) -> void:
 	for i in r.definition.doors.size():
 		var door = r.definition.doors[i]
 		
 		if door.direction == RoomDoorDefinition.Direction.Exit:
-			for j in range(4):
-				var er = _generate_recursive(r, door, length-1)
-				
-				if r != null:
-					r.connect_room(i, er)
-					break
+			var er = _generate_recursive(r, door, length-1)
+			
+			if er != null:
+				r.connect_room(i, er)
 
 
 
