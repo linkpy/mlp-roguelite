@@ -10,6 +10,10 @@ extends FSM_State
 
 
 
+func exit() -> void:
+	object.set_collision_mask_bit(10, true)
+
+
 ################################################### _process
 func _process(_dt: float) -> void:
 	# animation control
@@ -30,13 +34,20 @@ func _process(_dt: float) -> void:
 func _input( ev: InputEvent ) -> void:
 	if object.is_on_floor():
 		if ev.is_action_pressed("jump"):
-			object.impulse(
-				Vector2(0, -1), 
-				object.stats.get_jump_force()
-			)
+			if Input.is_action_pressed("down"):
+				object.set_collision_mask_bit(10, false)
+			else:
+				object.impulse(
+					Vector2(0, -1), 
+					object.stats.get_jump_force()
+				)
 		
 		elif ev.is_action_pressed("attack"):
 			controller.state = "attack1"
+	
+	if not object.is_on_floor():
+		if ev.is_action_released("down"):
+			object.set_collision_mask_bit(10, true)
 
 
 
@@ -50,6 +61,9 @@ func _physics_process( dt: float ) -> void:
 	)
 	
 	object.move( dt )
+	
+	if object.is_on_floor():
+		object.set_collision_mask_bit(10, true)
 
 
 

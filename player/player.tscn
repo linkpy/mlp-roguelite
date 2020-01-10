@@ -93,16 +93,6 @@ animations = [ {
 "name": "hurt",
 "speed": 12.5
 }, {
-"frames": [ ExtResource( 58 ), ExtResource( 51 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 54 ), ExtResource( 39 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 40 ) ],
-"loop": true,
-"name": "swing_heavy",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 9 ) ],
-"loop": false,
-"name": "swing_light1",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 41 ) ],
 "loop": true,
 "name": "swing_light2",
@@ -112,6 +102,16 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 25.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "swing_light1",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 58 ), ExtResource( 51 ), ExtResource( 55 ), ExtResource( 52 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 54 ), ExtResource( 39 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "swing_heavy",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ), ExtResource( 49 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 44 ), ExtResource( 50 ), ExtResource( 53 ), ExtResource( 46 ), ExtResource( 32 ), ExtResource( 48 ), ExtResource( 47 ) ],
 "loop": true,
@@ -282,7 +282,7 @@ tracks/1/keys = {
 "player",
 ]]
 collision_layer = 2
-collision_mask = 4097
+collision_mask = 5121
 script = ExtResource( 66 )
 stats = SubResource( 1 )
 
