@@ -18,7 +18,7 @@ func _pre_ready():
 		Vector2(1, 1), Vector2(1, 1)
 	)
 	var builder = LevelBuilder.new(
-		render_target, Vector2(5,5)
+		render_target, Vector2(10,10)
 	)
 	
 	generator.generate(6)

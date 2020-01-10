@@ -17,9 +17,9 @@ var astar: AStar2D = null
 func _ready() -> void:
 	_pre_ready()
 	
+	var start_time = OS.get_ticks_usec()
 	var gen = AStarGenerator.new(tilemap)
 	
-	var start_time = OS.get_ticks_usec()
 	astar = gen.generate()
 	print(
 		"AStarGenerator: took ", 
