@@ -29,22 +29,28 @@ extends LevelRenderNode
 #################################################### _render
 func _render(ri: RoomInstance):
 	for child in get_children():
-		# LevelRenderNode are ignored
-		if child is LevelRenderNode:
-			continue
+		_render_child(ri, child, true)
+
+############################################################
+### \description Renders the given node.
+###
+func _render_child(ri: RoomInstance, c: Node, ignore_rn: bool = true):
+	# LevelRenderNode are ignored
+	if c is LevelRenderNode:
+		if not ignore_rn:
+			c.render(ri)
 		
-		if child is TileMap:
-			_render_tilemap(child)
-		
-		elif child is CanvasLayer:
-			_render_layer(child)
-			continue
-		
-		else:
-			move_object(
-				LevelRenderTarget.ObjectLayer.Foreground,
-				child.name
-			)
+		return
+	
+	if c is TileMap:
+		_render_tilemap(c)
+	elif c is CanvasLayer:
+		_render_layer(c)
+	else:
+		move_object(
+			LevelRenderTarget.ObjectLayer.Foreground,
+			c.name
+		)
 
 ############################################################
 ### \description Renders the given tilemap.

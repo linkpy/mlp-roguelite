@@ -86,6 +86,7 @@ func move_object(l: int, on: String):
 	remove_child(o)
 	ds.add_child(o)
 	o.position = get_target().get_object_new_position(l, np)
+	o.visible = true
 
 
 
