@@ -80,9 +80,9 @@ _global_script_classes=[ {
 "path": "res://scripts/level/level_builder.gd"
 }, {
 "base": "Reference",
-"class": "LevelGenerationSupervisor",
+"class": "LevelGenerationContext",
 "language": "GDScript",
-"path": "res://scripts/level/level_generation_supervisor.gd"
+"path": "res://scripts/level/level_context.gd"
 }, {
 "base": "Node",
 "class": "LevelRenderNode",
@@ -169,7 +169,7 @@ _global_script_class_icons={
 "FocusBasedCamera": "",
 "Level": "",
 "LevelBuilder": "",
-"LevelGenerationSupervisor": "",
+"LevelGenerationContext": "",
 "LevelRenderNode": "",
 "LevelRenderNode_BasicRenderer": "",
 "LevelRenderNode_IfDoorConnected": "",

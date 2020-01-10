@@ -8,17 +8,54 @@ extends Reference
 
 
 
-### \description Generation supervision.
-var supervisor: LevelGenerationSupervisor
 ### \descrtiption Pool of rooms to use.
 var pool: RoomPools
+### \description Placed rooms
+var rooms: Array
+### \description Generation context
+var context: LevelGenerationContext
 
 
 
 ###################################################### _init
-func _init(s: LevelGenerationSupervisor, p: RoomPools) -> void:
-	supervisor = s
+func _init(p: RoomPools) -> void:
 	pool = p
+	rooms = []
+	context = LevelGenerationContext.new()
+	
+	context.import_pool(p)
+
+
+
+############################################################
+### \description Checks if the given point is in a validated
+###              room.
+###
+func is_point_in_room(pt: Vector2) -> bool:
+	for ri in rooms:
+		if ri.get_rectangle().has_point(pt):
+			return true
+	
+	return false
+
+############################################################
+### \description Checks if the given room overlaps any other
+###              rooms.
+###
+func does_room_overlap(ri: RoomInstance) -> bool:
+	return does_rect_overlap(ri.get_rectangle())
+
+func does_rect_overlap(r: Rect2) -> bool:
+	var pts = [
+		r.position, r.position + Vector2(r.size.x, 0),
+		r.end, r.position + Vector2(0, r.size.y)
+	]
+	
+	for pt in pts:
+		if is_point_in_room(pt):
+			return true
+	
+	return false
 
 
 
@@ -54,13 +91,13 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 		return null
 	
 	# if the generated room overlaps another room
-	if supervisor.does_room_overlap(room_inst):
+	if does_room_overlap(room_inst):
 		if Constants.LevelGenerationDebug:
-			print("LevelGeneration: Rejected (supervisor)")
+			print("LevelGeneration: Rejected (overlap)")
 		return null
 	
 	# we register the room
-	supervisor.add_room(room_inst)
+	rooms.push_back(room_inst)
 	
 	# we generate rooms for the exit doors
 	_generate_exit_rooms(room_inst, length)
@@ -96,33 +133,27 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 	if not pool.has_rooms_with_door(rd.direction, rd.side):
 		return null
 	
-	# we create the room instance
-	var inst = RoomInstance.new(
-		pool.get_random_room_with_door(
-			rd.direction,
-			rd.side
-		),
-		Vector2()
-	)
+	# find a fitting room
+	var def_and_door = _find_random_room(p, d)
 	
-	# we get the list of compatible doors
-	var doors = inst.definition.get_doors_on_side(
-		rd.direction,
-		rd.side
-	)
-	var door_idx = randi() % doors.size()
-	# we select one at random
-	var door = doors[door_idx]
+	if def_and_door.empty():
+		return null
+	
+	var def = def_and_door[0]
+	var door = def_and_door[1]
+	
+	# we create the room instance
+	var inst = RoomInstance.new(def, Vector2())
 	
 	# we correctly place the room
-	inst.position = (
-		  p.position
-		+ d.get_position_in_space(p.definition.size)
-		- door.get_position_in_space(inst.definition.size)
-		+ d.get_side_normal()
-	)
+	inst.position = _compute_room_rect(
+		p, d, inst.definition, door
+	).position
 	
-	inst.connect_room(door_idx, p)
+	# connect the room with the previous one
+	for door_idx in range(def.doors.size()):
+		if def.doors[door_idx] == door:
+			inst.connect_room(door_idx, p)
 	
 	# we return the generated room
 	return inst
@@ -141,3 +172,103 @@ func _generate_exit_rooms(r: RoomInstance, length: int) -> void:
 				if r != null:
 					r.connect_room(i, er)
 					break
+
+
+
+############################################################
+### \description Computes the rectangle of a room.
+###
+### \param pri : Previous room instance.
+### \parma prd : Previous room's door connected the new 
+###        room.
+### \param nrdef : New room's definition
+### \param nrd : New room's door connected to the previous 
+###        room.
+###
+func _compute_room_rect(
+	pri: RoomInstance, prd: RoomDoorDefinition, 
+	nrdef: RoomDefinition, nrd: RoomDoorDefinition
+) -> Rect2:
+	var r = Rect2()
+	
+	r.position = (
+		  pri.position
+		+ prd.get_position_in_space(pri.definition.size)
+		- nrd.get_position_in_space(nrdef.size)
+		+ prd.get_side_normal()
+	)
+	r.size = nrdef.size
+	
+	return r
+
+############################################################
+### \description Finds all rooms that can be connected to 
+###              the given room which fits the current 
+###              layout.
+### 
+func _find_all_fitting_rooms(pri: RoomInstance, prd: RoomDoorDefinition) -> Array:
+	var res = []
+	var rev_door = prd.reverse()
+	var prooms = pool.get_rooms_with_door(
+		rev_door.direction,
+		rev_door.side
+	)
+	
+	for room in prooms:
+		for door in room.doors:
+			var dirok = door.direction == rev_door.direction
+			var sideok = door.side == rev_door.side
+			
+			if dirok and sideok:
+				var rect = _compute_room_rect(
+					pri, prd, room, door
+				)
+				
+				if not does_rect_overlap(rect):
+					res.push_back([room, door])
+	
+	return res
+
+############################################################
+### \description Selects room based by their occurence.
+###
+func _select_rooms_by_occurences(prooms: Array) -> Array:
+	var res = []
+	var avg_count = context.get_average_occurence_count()
+	
+	for room in prooms:
+		var occ_count = context.get_occurence_count(room[0])
+		
+		if occ_count > 0 and room[0].is_special:
+			continue
+		
+		if occ_count < avg_count:
+			res.push_back(room)
+	
+	if res.size() == 0:
+		return prooms
+	
+	return res
+
+############################################################
+### \description Find a random room fitting.
+###
+func _find_random_room(pri: RoomInstance, prd: RoomDoorDefinition) -> Array:
+	var prooms = _find_all_fitting_rooms(pri, prd)
+	prooms = _select_rooms_by_occurences(prooms)
+	
+	if prooms.size() == 0:
+		if Constants.LevelGenerationDebug:
+			print("LevelGeneration: Rejected (no potential room)")
+		
+		return []
+	
+	if prooms.size() == 1:
+		return prooms[0]
+	
+	for i in range(prooms.size()):
+		if prooms[i][0] == pri.definition:
+			prooms.remove(i)
+			break
+	
+	return prooms[randi() % prooms.size()]

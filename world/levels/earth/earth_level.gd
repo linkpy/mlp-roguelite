@@ -7,10 +7,7 @@ func _pre_ready():
 	var stime = OS.get_ticks_usec()
 	
 	var room_pools = RoomRegistery.make_earth_pool()
-	var supervisor = LevelGenerationSupervisor.new()
-	var generator = LinearLevelGenerator.new(
-		supervisor, room_pools
-	)
+	var generator = LinearLevelGenerator.new(room_pools)
 	var render_target = LevelRenderTarget.new(
 		self,
 		$map, $map_bg,
@@ -22,7 +19,7 @@ func _pre_ready():
 	)
 	
 	generator.generate(6)
-	builder.render_rooms(supervisor.rooms)
+	builder.render_rooms(generator.rooms)
 	
 	var spawn = get_tree().get_nodes_in_group("player-spawn")
 	if spawn.size() != 0:
