@@ -83,7 +83,6 @@ enemies = {
 [node name="camera_focus_point" parent="select_random_one/basic0/if_not_first_room" instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 359, 381 )
-enabled = true
 distance = 12.0
 
 [node name="map_fg_0" type="TileMap" parent="select_random_one/basic0"]
@@ -120,12 +119,10 @@ enemies = {
 
 [node name="camera_focus_point" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 8 )]
 position = Vector2( 174, 244 )
-enabled = true
 distance = 11.0
 
 [node name="camera_focus_point2" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 8 )]
 position = Vector2( 552, 244 )
-enabled = true
 distance = 11.0
 
 [node name="map_fg_1" type="TileMap" parent="select_random_one/basic1"]

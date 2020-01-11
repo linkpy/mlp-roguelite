@@ -41,6 +41,15 @@ var focus_objects: Array = []
 
 ##################################################### _ready
 func _ready() -> void:
+	get_parent().connect(
+		"loaded", self, "_on_level_loaded",
+		[], CONNECT_ONESHOT
+	)
+
+############################################################
+### \description Called when the level is loaded.
+###
+func _on_level_loaded() -> void:
 	focus_objects = get_tree().get_nodes_in_group("camera-focus")
 
 

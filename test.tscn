@@ -46,7 +46,6 @@ distance = 20.0
 [node name="camera_focus_point" parent="." instance=ExtResource( 3 )]
 position = Vector2( 360, 95 )
 enabled = false
-distance = 10.0
 
 [node name="camera_focus_point2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 918, 574 )

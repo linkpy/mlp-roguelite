@@ -11,7 +11,7 @@ extends Object
 
 ### \description Enable debug mode for the camera and the 
 ###              focus objects.
-const CameraDebug = false
+const CameraDebug = true
 ### \description Enable debug mode for the pathfinding.
 const PathfindingDebug = true
 ### \description Enable debug mode for the level generator.

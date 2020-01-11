@@ -14,6 +14,12 @@ var astar: AStar2D = null
 var rooms: Array = []
 
 
+
+### \description emitted when the level is loaded.
+signal loaded()
+
+
+
 ##################################################### _ready
 func _ready() -> void:
 	_pre_ready()
@@ -29,6 +35,7 @@ func _ready() -> void:
 	)
 	
 	update()
+	emit_signal("loaded")
 
 ############################################################
 ### \description Called before _ready.
