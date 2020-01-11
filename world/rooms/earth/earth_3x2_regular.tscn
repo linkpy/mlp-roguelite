@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/level/renderer/builtins/basic_renderer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/level/renderer/builtins/if_door_connected.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/level/renderer/builtins/render_random_one.gd" type="Script" id=5]
 [ext_resource path="res://world/objects/room_area/room_area.tscn" type="PackedScene" id=6]
 [ext_resource path="res://world/objects/enemy_spawn_area/enemy_spawn_area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/ingame/camera/focus_point.tscn" type="PackedScene" id=8]
 
 [node name="earth_3x2" type="Node"]
 script = ExtResource( 1 )
@@ -70,6 +71,7 @@ script = ExtResource( 3 )
 render_if_not_first = true
 
 [node name="enemy_spawn_area" parent="select_random_one/basic0/if_not_first_room" instance=ExtResource( 7 )]
+visible = false
 position = Vector2( 360, 381 )
 rect = Rect2( -72, -12, 144, 24 )
 extents = Vector2( 72, 12 )
@@ -77,6 +79,12 @@ enemies = {
 "medium": 3,
 "small": 6
 }
+
+[node name="camera_focus_point" parent="select_random_one/basic0/if_not_first_room" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 359, 381 )
+enabled = true
+distance = 12.0
 
 [node name="map_fg_0" type="TileMap" parent="select_random_one/basic0"]
 visible = false
@@ -109,6 +117,16 @@ enemies = {
 "medium": 2,
 "small": 4
 }
+
+[node name="camera_focus_point" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 8 )]
+position = Vector2( 174, 244 )
+enabled = true
+distance = 11.0
+
+[node name="camera_focus_point2" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 8 )]
+position = Vector2( 552, 244 )
+enabled = true
+distance = 11.0
 
 [node name="map_fg_1" type="TileMap" parent="select_random_one/basic1"]
 tile_set = ExtResource( 4 )
