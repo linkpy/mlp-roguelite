@@ -17,7 +17,7 @@ export var render_if_not_first: bool = false
 
 ##################################################### render
 func render(ri: RoomInstance):
-	var first = is_first(ri)
+	var first = ri.is_first_room()
 	var cond = (
 		   (render_if_not_first and not first)
 		or (not render_if_not_first and first)
@@ -25,19 +25,3 @@ func render(ri: RoomInstance):
 	
 	if cond:
 		.render(ri)
-
-
-
-############################################################
-### \description Checks if the room is the first room of the
-###              level.
-###
-func is_first(ri: RoomInstance) -> bool:
-	for i in range(ri.connections.size()):
-		var def = ri.definition.doors[i]
-		var entry = def.direction == RoomDoorDefinition.Direction.Entry
-		
-		if entry and ri.has_connection(i):
-			return false
-	
-	return true

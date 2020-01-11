@@ -48,3 +48,9 @@ func _on_damaged(origin, amnt):
 	fsm.state = "hurt"
 	
 	sprite.flip_h = origin.position.x < position.x
+
+
+func _input(ev):
+	if not Constants.LevelGenerationDebug:
+		if ev is InputEventKey and ev.pressed and ev.scancode == KEY_F5:
+			get_tree().reload_current_scene()

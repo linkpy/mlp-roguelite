@@ -14,6 +14,10 @@ var definition: RoomDefinition
 var position: Vector2
 ### \description The room's connections.
 var connections: Array
+### \description True if this instance is an area transition
+var area_transition: bool
+### \description True if this instance has backtracking
+var backtracking: bool
 
 
 
@@ -22,6 +26,8 @@ func _init(d: RoomDefinition, p: Vector2) -> void:
 	definition = d
 	position = p
 	connections = []
+	area_transition = false
+	backtracking = false
 	
 	_init_connections()
 
@@ -91,3 +97,28 @@ func get_rectangle() -> Rect2:
 		position,
 		definition.size
 	)
+
+
+
+func is_first_room() -> bool:
+	for di in definition.doors.size():
+		var d = definition.doors[di]
+		
+		if d.direction == RoomDoorDefinition.Direction.Entry:
+			if has_connection(di):
+				return false
+	
+	return true
+
+func is_branching() -> bool:
+	return definition.is_branching()
+
+func is_end_room() -> bool:
+	for di in definition.doors.size():
+		var d = definition.doors[di]
+		
+		if d.direction == RoomDoorDefinition.Direction.Exit:
+			if has_connection(di):
+				return false
+	
+	return true
