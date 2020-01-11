@@ -81,3 +81,20 @@ func get_doors_on_side(d: int, s: int) -> Array:
 			res.push_back(door)
 	
 	return res
+
+
+
+############################################################
+### \description Checks if the room is a branching one.
+###
+func is_branching() -> bool:
+	var count = 0
+	
+	for door in doors:
+		if door.direction == RoomDoorDefinition.Direction.Exit:
+			count += 1
+			
+			if count >= 2:
+				return true
+	
+	return false

@@ -18,7 +18,7 @@ func _pre_ready():
 		render_target, Vector2(10,10)
 	)
 	
-	generator.generate(6)
+	generator.generate(6, 6)
 	builder.render_rooms(generator.rooms)
 	rooms = generator.rooms
 	

@@ -68,8 +68,8 @@ func does_rect_overlap(r: Rect2) -> bool:
 ############################################################
 ### \description Generates the level with a given length.
 ###
-func generate(length: int):
-	_generate_recursive(null, null, length)
+func generate(length: int, branches: int):
+	_generate_recursive(null, null, length, branches)
 	_find_room_connections()
 
 
@@ -77,7 +77,12 @@ func generate(length: int):
 ############################################################
 ### \description Recursive generation algorithm.
 ###
-func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: int) -> RoomInstance:
+func _generate_recursive(
+	prev: RoomInstance, 
+	door: RoomDoorDefinition, 
+	length: int,
+	branches: int
+) -> RoomInstance:
 	# if we are at the end of the generation
 	if length == 0:
 		if Constants.LevelGenerationDebug:
@@ -103,6 +108,14 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 			print("LevelGeneration: Rejected (overlap)")
 		return null
 	
+	if room_inst.definition.is_branching():
+		if branches == 0:
+			if Constants.LevelGenerationDebug:
+				print("LevelGeneration: Rejected (too much branching)")
+			return null
+		
+		branches -= 1
+	
 	# we register the room
 	rooms.push_back(room_inst)
 	
@@ -116,7 +129,7 @@ func _generate_recursive(prev: RoomInstance, door: RoomDoorDefinition, length: i
 #		)
 		
 	# we generate rooms for the exit doors
-	_generate_exit_rooms(room_inst, length)
+	_generate_exit_rooms(room_inst, length, branches)
 	
 	return room_inst
 
@@ -168,12 +181,12 @@ func _generate_connected_room(p: RoomInstance, d: RoomDoorDefinition) -> RoomIns
 ############################################################
 ### \description Generates exit rooms.
 ###
-func _generate_exit_rooms(r: RoomInstance, length: int) -> void:
+func _generate_exit_rooms(r: RoomInstance, length: int, branches: int) -> void:
 	for i in r.definition.doors.size():
 		var door = r.definition.doors[i]
 		
 		if door.direction == RoomDoorDefinition.Direction.Exit:
-			var er = _generate_recursive(r, door, length-1)
+			var er = _generate_recursive(r, door, length-1, branches)
 			
 			if er != null:
 				r.connect_room(i, er)
@@ -220,6 +233,9 @@ func _find_all_fitting_rooms(pri: RoomInstance, prd: RoomDoorDefinition) -> Arra
 	)
 	
 	for room in prooms:
+		if pri.definition.is_branching() and room.is_branching():
+			continue
+		
 		for door in room.doors:
 			var dirok = door.direction == rev_door.direction
 			var sideok = door.side == rev_door.side
@@ -297,7 +313,7 @@ func _find_all_room_connections_for(
 	door_idx: int
 ) -> void:
 	if room.has_connection(door_idx):
-		continue
+		return
 	
 	var door = room.definition.doors[door_idx]
 	var pos = (
