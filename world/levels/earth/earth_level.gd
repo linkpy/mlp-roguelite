@@ -2,9 +2,18 @@ extends Level
 
 
 
+var enemy_pool: EnemyPools
+
+
+
 func _pre_ready():
 	randomize()
 	var stime = OS.get_ticks_usec()
+	
+	enemy_pool = EnemyPools.new()
+	enemy_pool.add_enemy(
+		"small", preload("res://enemies/slime/slime.tscn")
+	)
 	
 	var room_pools = RoomRegistery.make_earth_pool()
 	var generator = LinearLevelGenerator.new(room_pools)

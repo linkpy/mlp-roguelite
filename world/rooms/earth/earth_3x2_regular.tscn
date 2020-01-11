@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/level/renderer/builtins/basic_renderer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/level/renderer/builtins/if_door_connected.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://world/tileset/earth.tres" type="TileSet" id=4]
 [ext_resource path="res://scripts/level/renderer/builtins/render_random_one.gd" type="Script" id=5]
 [ext_resource path="res://world/objects/room_area/room_area.tscn" type="PackedScene" id=6]
+[ext_resource path="res://world/objects/enemy_spawn_area/enemy_spawn_area.tscn" type="PackedScene" id=7]
 
 [node name="earth_3x2" type="Node"]
 script = ExtResource( 1 )
@@ -60,17 +61,56 @@ position = Vector2( 137, 399 )
 
 [node name="select_random_one" type="Node" parent="."]
 script = ExtResource( 5 )
-may_render_nothing = true
 
-[node name="map_fg_0" type="TileMap" parent="select_random_one"]
+[node name="basic0" type="Node" parent="select_random_one"]
+script = ExtResource( 1 )
+
+[node name="if_not_first_room" type="Node" parent="select_random_one/basic0"]
+script = ExtResource( 3 )
+render_if_not_first = true
+
+[node name="enemy_spawn_area" parent="select_random_one/basic0/if_not_first_room" instance=ExtResource( 7 )]
+position = Vector2( 360, 381 )
+rect = Rect2( -72, -12, 144, 24 )
+extents = Vector2( 72, 12 )
+enemies = {
+"medium": 3,
+"small": 6
+}
+
+[node name="map_fg_0" type="TileMap" parent="select_random_one/basic0"]
 visible = false
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 24, 24 )
 format = 1
 tile_data = PoolIntArray( 10, 0, 1, 11, 0, 65536, 12, 0, 65536, 13, 0, 65536, 14, 0, 65536, 15, 0, 65536, 16, 0, 65536, 17, 0, 65536, 18, 0, 65536, 19, 0, 2, 65546, 0, 131073, 65547, 0, 196615, 65548, 0, 196615, 65549, 0, 196615, 65550, 0, 196615, 65551, 0, 196615, 65552, 0, 196615, 65553, 0, 196615, 65554, 0, 196615, 65555, 0, 131074, 131082, 0, 131073, 131083, 0, 196615, 131084, 0, 196615, 131085, 0, 196615, 131086, 0, 196615, 131087, 0, 196615, 131088, 0, 196615, 131089, 0, 196615, 131090, 0, 196615, 131091, 0, 131074, 196618, 0, 131073, 196619, 0, 196615, 196620, 0, 196615, 196621, 0, 196615, 196622, 0, 196615, 196623, 0, 196615, 196624, 0, 196615, 196625, 0, 196615, 196626, 0, 196615, 196627, 0, 131074, 262154, 0, 131073, 262155, 0, 196615, 262156, 0, 196615, 262157, 0, 196615, 262158, 0, 196615, 262159, 0, 196615, 262160, 0, 196615, 262161, 0, 196615, 262162, 0, 196615, 262163, 0, 131074, 327690, 0, 131073, 327691, 0, 196615, 327692, 0, 196615, 327693, 0, 196615, 327694, 0, 196615, 327695, 0, 196615, 327696, 0, 196615, 327697, 0, 196615, 327698, 0, 196615, 327699, 0, 131074, 393226, 0, 131073, 393227, 0, 196615, 393228, 0, 196615, 393229, 0, 196615, 393230, 0, 196615, 393231, 0, 196615, 393232, 0, 196615, 393233, 0, 196615, 393234, 0, 196615, 393235, 0, 131074, 458762, 0, 131073, 458763, 0, 196615, 458764, 0, 196615, 458765, 0, 196615, 458766, 0, 196615, 458767, 0, 196615, 458768, 0, 196615, 458769, 0, 196615, 458770, 0, 196615, 458771, 0, 131074, 524298, 0, 65537, 524299, 0, 4, 524300, 0, 196615, 524301, 0, 196615, 524302, 0, 196615, 524303, 0, 196615, 524304, 0, 196615, 524305, 0, 196615, 524306, 0, 3, 524307, 0, 65538, 589835, 0, 131073, 589836, 0, 196615, 589837, 0, 196615, 589838, 0, 196615, 589839, 0, 196615, 589840, 0, 196615, 589841, 0, 196615, 589842, 0, 131074, 655371, 0, 131073, 655372, 0, 196615, 655373, 0, 196615, 655374, 0, 196615, 655375, 0, 196615, 655376, 0, 196615, 655377, 0, 196615, 655378, 0, 131074, 720907, 0, 131073, 720908, 0, 196615, 720909, 0, 196615, 720910, 0, 196615, 720911, 0, 196615, 720912, 0, 196615, 720913, 0, 196615, 720914, 0, 131074, 786443, 0, 65537, 786444, 0, 131072, 786445, 0, 131072, 786446, 0, 131072, 786447, 0, 131072, 786448, 0, 131072, 786449, 0, 131072, 786450, 0, 65538, 1179659, 0, 196608, 1179660, 0, 196609, 1179661, 0, 196609, 1179662, 0, 196609, 1179663, 0, 196609, 1179664, 0, 196609, 1179665, 0, 196609, 1179666, 0, 196610, 1245184, 0, 196608, 1245185, 0, 196609, 1245186, 0, 196609, 1245187, 0, 196609, 1245188, 0, 196609, 1245189, 0, 196609, 1245190, 0, 196609, 1245191, 0, 196609, 1245192, 0, 196610, 1245207, 0, 196608, 1245208, 0, 196609, 1245209, 0, 196609, 1245210, 0, 196609, 1245211, 0, 196609, 1245212, 0, 196609, 1245213, 0, 196610 )
 
-[node name="map_fg_1" type="TileMap" parent="select_random_one"]
-visible = false
+[node name="basic1" type="Node" parent="select_random_one"]
+script = ExtResource( 1 )
+
+[node name="if_not_first_room" type="Node" parent="select_random_one/basic1"]
+script = ExtResource( 3 )
+render_if_not_first = true
+
+[node name="enemy_spawn_area" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 7 )]
+position = Vector2( 180, 224 )
+rect = Rect2( -72, -12, 144, 24 )
+extents = Vector2( 72, 12 )
+enemies = {
+"medium": 2,
+"small": 4
+}
+
+[node name="enemy_spawn_area2" parent="select_random_one/basic1/if_not_first_room" instance=ExtResource( 7 )]
+position = Vector2( 540, 224 )
+rect = Rect2( -72, -12, 144, 24 )
+extents = Vector2( 72, 12 )
+enemies = {
+"medium": 2,
+"small": 4
+}
+
+[node name="map_fg_1" type="TileMap" parent="select_random_one/basic1"]
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 24, 24 )
 format = 1

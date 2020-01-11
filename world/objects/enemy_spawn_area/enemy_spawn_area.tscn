@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/objects/enemy_spawn_area/enemy_spawn_area.gd" type="Script" id=1]
+
+[node name="enemy_spawn_area" type="VisibilityNotifier2D"]
+rect = Rect2( -12, -12, 24, 24 )
+script = ExtResource( 1 )
+extents = Vector2( 12, 12 )
+enemies = {
+
+}
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered" flags=6]
