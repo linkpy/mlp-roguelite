@@ -20,6 +20,14 @@ const LevelGenerationDebug = true
 const LevelRenderingDebug = true
 
 
+###################################################### world
+
+### \description Size of a level layout cell.
+const CellSize = Vector2(10,10)
+### \description Size of a tile.
+const TileSize = Vector2(24,24)
+
+
 #################################################### physics
 
 ### \description Pixel to Meter conversion constant.
