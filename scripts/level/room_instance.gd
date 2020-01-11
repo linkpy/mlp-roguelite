@@ -16,8 +16,6 @@ var position: Vector2
 var connections: Array
 ### \description True if this instance is an area transition
 var area_transition: bool
-### \description True if this instance has backtracking
-var backtracking: bool
 
 
 
@@ -27,7 +25,6 @@ func _init(d: RoomDefinition, p: Vector2) -> void:
 	position = p
 	connections = []
 	area_transition = false
-	backtracking = false
 	
 	_init_connections()
 

@@ -100,11 +100,6 @@ _global_script_classes=[ {
 "path": "res://scripts/level/renderer/builtins/if_area_transition.gd"
 }, {
 "base": "LevelRenderNode_BasicRenderer",
-"class": "LevelRenderNode_IfBacktracking",
-"language": "GDScript",
-"path": "res://scripts/level/renderer/builtins/if_backtracking.gd"
-}, {
-"base": "LevelRenderNode_BasicRenderer",
 "class": "LevelRenderNode_IfDoorConnected",
 "language": "GDScript",
 "path": "res://scripts/level/renderer/builtins/if_door_connected.gd"
@@ -188,7 +183,6 @@ _global_script_class_icons={
 "LevelRenderNode": "",
 "LevelRenderNode_BasicRenderer": "",
 "LevelRenderNode_IfAreaTransition": "",
-"LevelRenderNode_IfBacktracking": "",
 "LevelRenderNode_IfDoorConnected": "",
 "LevelRenderNode_IfEndRoom": "",
 "LevelRenderNode_IfFirstRoom": "",
