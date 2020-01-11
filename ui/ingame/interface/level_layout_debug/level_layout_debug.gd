@@ -25,7 +25,10 @@ func draw_room(r: RoomInstance):
 	if r.is_first_room():
 		c = Color(0, 1, 1, 0.25)
 	elif r.is_end_room():
-		c = Color(1, 1, 0, 0.25)
+		if r.area_transition:
+			c = Color(1, 1, 1, 0.25)
+		else:
+			c = Color(1, 1, 0, 0.25)
 	elif r.is_branching():
 		c = Color(0, 0, 0, 0.25)
 	else:

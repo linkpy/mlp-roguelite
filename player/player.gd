@@ -52,5 +52,7 @@ func _on_damaged(origin, amnt):
 
 func _input(ev):
 	if not Constants.LevelGenerationDebug:
-		if ev is InputEventKey and ev.pressed and ev.scancode == KEY_F5:
-			get_tree().reload_current_scene()
+		return
+	
+	if ev is InputEventKey and ev.pressed and ev.scancode == KEY_F5:
+		get_tree().reload_current_scene()

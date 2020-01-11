@@ -56,12 +56,29 @@ func get_room_containing_point(pt: Vector2) -> RoomInstance:
 func does_room_overlap(ri: RoomInstance) -> bool:
 	return does_rect_overlap(ri.get_rectangle())
 
+############################################################
+### \description Checks if the given rect overlaps any room.
+###
 func does_rect_overlap(r: Rect2) -> bool:
 	for ri in rooms:
 		if ri.get_rectangle().intersects(r):
 			return true
 	
 	return false
+
+
+
+############################################################
+### \description Gets all ending rooms of the level.
+###
+func get_ending_rooms() -> Array:
+	var res = []
+	
+	for room in rooms:
+		if room.is_end_room():
+			res.push_back(room)
+	
+	return res
 
 
 
@@ -266,7 +283,7 @@ func _select_rooms_by_occurences(prooms: Array) -> Array:
 		if occ_count < avg_count:
 			res.push_back(room)
 	
-	if res.size() == 0:
+	if res.size() <= 1:
 		return prooms
 	
 	return res

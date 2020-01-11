@@ -97,6 +97,10 @@ func get_rectangle() -> Rect2:
 
 
 
+############################################################
+### \description Checks if the room has rooms connected to
+###              its entry.
+###
 func is_first_room() -> bool:
 	for di in definition.doors.size():
 		var d = definition.doors[di]
@@ -107,9 +111,16 @@ func is_first_room() -> bool:
 	
 	return true
 
+############################################################
+### \description Checks if the room has branching.
+###
 func is_branching() -> bool:
 	return definition.is_branching()
 
+############################################################
+### \description Checks if the room doesn't have any rooms
+###              connected to its exit.
+###
 func is_end_room() -> bool:
 	for di in definition.doors.size():
 		var d = definition.doors[di]

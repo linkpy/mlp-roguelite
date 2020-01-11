@@ -19,6 +19,10 @@ func _pre_ready():
 	)
 	
 	generator.generate(6, 6)
+	
+	var erooms = generator.get_ending_rooms()
+	erooms[randi() % erooms.size()].area_transition = true
+	
 	builder.render_rooms(generator.rooms)
 	rooms = generator.rooms
 	
